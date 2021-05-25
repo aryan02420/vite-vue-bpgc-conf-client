@@ -1,24 +1,30 @@
 <template>
-  <div class="flex flex-col bg-primary p-4 gap-1 shadow-sm rounded-md">
+  <div class="flex flex-col bg-primary px-4 py-4 gap-4 shadow-sm rounded-md">
     <div class="flex flex-row items-center justify-between">
-      <UserInfoSmall username="dumdum" usercolor="green" imgsize="2" />
+      <UserInfoSmall :username="'redsus'" :usercolor="'brown'" :imgsize="2" :online="true"/>
       <div class="flex flex-row items-center justify-end gap-2">
         <DateInfo date="20 may"/>
         <span class="material-icons material-icons-round rounded-full hover:bg-gray-200 p-1 cursor-pointer">more_vert</span>
       </div>
     </div>
-    <div>
+    <div class="mx-2">
+      <div class="flex flex-row flex-wrap gap-1 items-baseline w-auto">
+        <a class="text-sm hover:text-blue-400 hover:underline mr-3" :href="channelURL">#{{channel}}</a>
+        <a v-for="tag in tags" :key="tag"
+        class="text-xs hover:bg-blue-400 hover:text-white px-3 py-1 rounded-full"
+        :href="tagUrl(tag)">{{tag}}</a>
+      </div>
       <slot></slot>
     </div>
     <div class="flex flex-row items-center gap-4">
-      <VoteButton voted="-1" />
+      <VoteButton :voted="-1" />
       <CommentButton :numComments="12" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 import UserInfoSmall from '@/components/userInfoSmall.vue'
 import VoteButton from '@/components/voteButtons.vue'
 import CommentButton from '@/components/commentButton.vue'
@@ -33,14 +39,29 @@ export default defineComponent({
     DateInfo
   },
   props: {
-    heading: {
+    channel: {
       type: String,
+      required: true
+    },
+    tags: {
+      type: Array,
       required: false
-    }
+    },
   },
+  computed: {
+    channelURL():String {
+      return `/channel/${this.channel}`
+    },
+  },
+  methods: {
+    tagUrl(tag:String):String {
+      return `/tag/${tag}`
+    }
+  }
+
+  
 })
 </script>
 
 <style scoped>
-
 </style>

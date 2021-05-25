@@ -24,10 +24,10 @@ export default defineComponent({
   },
   computed: {
     isUpvote():Boolean {
-      return (this.voted==1)
+      return (this.voted===1)
     },
     isDownvote():Boolean {
-      return (this.voted==-1)
+      return (this.voted===-1)
     },
   },
 })

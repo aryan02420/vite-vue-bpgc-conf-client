@@ -1,5 +1,19 @@
 import { createApp } from 'vue'
+import { createStore } from 'vuex'
 import App from './App.vue'
 import './index.css'
 
-createApp(App).mount('#app')
+const store = createStore({
+  state():any {
+    return {
+      count: 0
+    }
+  },
+  mutations: {
+    increment (state:any) {
+      state.count++
+    }
+  }
+})
+
+createApp(App).use(store).mount('#app')

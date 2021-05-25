@@ -1,13 +1,17 @@
 <template>
-  <UserInfoSmall username="timber" imgsize="1.5" />
-  <UserInfoSmall username="aaaa" usercolor="red" imgsize="1.75" />
-  <UserInfoSmall username="dumdum" usercolor="green" imgsize="2" />
-  <VoteButton votes="32" />
-  <VoteButton votes="32" voted="1" />
-  <VoteButton voted="-1" />
+  <UserInfoSmall username="timber" :imgsize="1.5" :online="true" />
+  <UserInfoSmall username="aaaa" usercolor="red" :imgsize="1.75" />
+  <UserInfoSmall username="dumdum" usercolor="green" :imgsize="2" />
+  <VoteButton :votes="32" />
+  <VoteButton :votes="32" :voted="1" />
+  <VoteButton :voted="-1" />
   <CommentButton :numComments="12" />
   <CommentButton :numComments="12" :active="true"/>
-  <Post><h1>ahahahahah</h1></Post>
+  <Post @click="this.$store.commit('increment')"
+  :channel="'general'" :tags="['shitpost', 'lmao', 'komedy']">
+    <h1 class="text-2xl font-bold text-primary">{{$store.state.count}} title lorem ipsum idk.</h1>
+    <p class="text-base text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </Post>
 </template>
 
 <script lang="ts">
