@@ -11,10 +11,12 @@
       <div class="flex flex-row flex-wrap gap-1 items-baseline w-auto">
         <a class="text-sm hover:text-blue-400 hover:underline mr-3" :href="channelURL">#{{channel}}</a>
         <a v-for="tag in tags" :key="tag"
-        class="text-xs hover:bg-blue-400 hover:text-white px-3 py-1 rounded-full"
+        class="text-xs hover:bg-gray-200 hover:text-secondary px-2 rounded-full"
         :href="tagUrl(tag)">{{tag}}</a>
       </div>
-      <slot></slot>
+      <div>
+        <slot></slot>
+      </div>
     </div>
     <div class="flex flex-row items-center gap-4">
       <VoteButton :voted="-1" />
@@ -24,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import UserInfoSmall from '@/components/userInfoSmall.vue'
 import VoteButton from '@/components/voteButtons.vue'
 import CommentButton from '@/components/commentButton.vue'
@@ -41,20 +43,20 @@ export default defineComponent({
   props: {
     channel: {
       type: String,
-      required: true
+      required: true,
     },
     tags: {
-      type: Array,
-      required: false
+      type: Array as PropType<string[]>,
+      default: () => []
     },
   },
   computed: {
-    channelURL():String {
+    channelURL():string {
       return `/channel/${this.channel}`
     },
   },
   methods: {
-    tagUrl(tag:String):String {
+    tagUrl(tag:string):string {
       return `/tag/${tag}`
     }
   }
