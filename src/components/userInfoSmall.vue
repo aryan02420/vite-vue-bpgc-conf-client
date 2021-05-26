@@ -38,7 +38,7 @@ export default defineComponent({
   },
   computed: {
     profileURL():string {
-      return `/users/${this.username}`
+      return `/user/${this.username}`
     },
     profileImageURL():string {
       return `https://robohash.org/${this.username}?bgset=bg1`

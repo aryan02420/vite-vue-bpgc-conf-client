@@ -1,7 +1,7 @@
 <template>
-  <div :class="['markdown overflow-hidden h-auto text-secondary', {collapsed: _readmore}]" v-html="HTMLContent"></div>
+  <div :class="['markdown overflow-hidden h-auto text-secondary', { 'max-h-24': _readmore }]" v-html="HTMLContent"></div>
   <div @click="expand" v-if="_readmore"
-   class="px-2 mx-auto -mb-4 text-sm max-w-max cursor-pointer hover:bg-gray-200 hover:text-secondary rounded-full"
+   class="px-2 ml-auto -mt-5 text-sm max-w-max cursor-pointer bg-primary hover:bg-gray-200 hover:text-secondary hover:rounded-full relative select-none"
    >read more...</div>
 </template>
 
@@ -39,7 +39,4 @@ export default defineComponent({
 </script>
 
 <style scoped lang="postcss">
-.markdown.collapsed {
-  @apply h-24;
-}
 </style>
