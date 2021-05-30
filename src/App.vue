@@ -20,7 +20,7 @@
     :username="'dootdoot'" :usercolor="'magenta'"
     :voted="-1" :numVotes="101" :numComments="15" :date="'21 may'"
     :channel="'bitsp'" :tags="['compre', 'pct', 'clear']">
-      <Markdown :readMore="false" rawContent="## markdown test. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing."/>
+      <Markdown :readMore="true" rawContent="## markdown test. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing."/>
       <!-- <h1 class="text-2xl font-bold text-primary">PCT! PCT! PCT! PCT! PCT!</h1>
       <p class="text-base text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing.</p>
       <p class="text-base text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing.</p>
@@ -29,6 +29,10 @@
     <Post :date="'22 may'"
     :channel="'bitsp'" :tags="['compre', 'pct', 'clear']">
       <Markdown :readMore="true" rawContent="## markdown test. dolor sit amet consectetur adipiscing."/>
+    </Post>
+    <Post :date="'22 may'"
+    :channel="'bitsp'" :tags="['compre', 'pct', 'clear']">
+      <Markdown :readMore="true" rawContent="## markdown test. dolor sit amet consectetur adipiscing. dolor sit amet consectetur adipiscing. dolor sit amet consectetur adipiscing. dolor sit amet consectetur adipiscing."/>
     </Post>
   </div>
 </template>

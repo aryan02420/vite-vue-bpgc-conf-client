@@ -1,7 +1,9 @@
 <template>
-  <div :class="['markdown overflow-hidden h-auto text-secondary', { 'max-h-24': _readmore }]" v-html="HTMLContent"></div>
-  <div @click="expand" v-if="_readmore"
-   class="px-2 ml-auto -mt-5 text-sm max-w-max cursor-pointer bg-primary hover:bg-gray-200 hover:text-secondary hover:rounded-full relative select-none"
+  <div ref="content" @click.once="expand"
+   :class="['markdown overflow-hidden h-auto text-secondary', { 'max-h-24 cursor-pointer': _readmore }]"
+    v-html="HTMLContent"></div>
+  <div @click.once="expand" v-if="_readmore"
+   class="pt-24 -mt-24 text-sm cursor-pointer select-none"
    >read more...</div>
 </template>
 
@@ -22,7 +24,7 @@ export default defineComponent({
   },
   computed: {
     HTMLContent():string {
-    return `<h1>${this.rawContent}</h1>`
+      return `<h1>${this.rawContent}</h1>`
     }
   },
   methods: {
@@ -34,7 +36,12 @@ export default defineComponent({
     return {
       _readmore: ref(props.readMore)
     }
-  }
+  },
+  mounted() {
+    this.$nextTick(function (this:any) {
+      this._readmore &&= (this.$refs.content.clientHeight >= 96)
+    })
+  },
 })
 </script>
 
