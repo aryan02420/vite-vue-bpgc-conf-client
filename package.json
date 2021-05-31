@@ -4,8 +4,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview --host",
-    "deploy": "npm run build && push-dir --dir=dist --branch=gh-pages"
+    "serve": "vite preview",
+    "deploy": "npm run build -- --base=/vite-vue-bpgc-conf-client/ && push-dir --dir=dist --branch=gh-pages"
   },
   "dependencies": {
     "push-dir": "^0.4.1",
