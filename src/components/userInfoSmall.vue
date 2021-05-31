@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row items-center gap-x-3 w-auto text-username"
     :style="{color: usercolor}">
-    <a :href="profileURL" :class="['m-2 font-bold rounded-full bg-gray-200 select-none', {'user-online': online}]">
+    <a :href="profileURL" :class="['m-2 font-bold rounded-full bg-gray-200 select-none', `user-status-${status}`]">
       <img class="profilepic overflow-hidden rounded-full ring-2 ring-opacity-100 ring-gray-200"
         :src="profileImageURL"
         :alt="username"
@@ -12,7 +12,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
+
+export enum activityStatus {
+  online = "online",
+  offline = "offline",
+  busy = "busy",
+  hidden = "hidden"
+}
+
 export default defineComponent({
   name: 'UserInfoSmall',
   props: {
@@ -30,10 +38,10 @@ export default defineComponent({
       required: false,
       default: 1.75
     },
-    online: {
-      type: Boolean,
+    status: {
+      type: String as PropType<activityStatus>,
       required: false,
-      default: false
+      default: activityStatus.hidden
     }
   },
   computed: {
@@ -54,15 +62,27 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
-.user-online {
+a[class^='user-status-'], a[class*='user-status-'] {
   position: relative;
 }
-.user-online::after {
+a[class^='user-status-']::after, a[class*='user-status-']::after {
   position: absolute;
   content: '';
   top: 0;
   right: 0;
-  @apply w-2 h-2 bg-lime-500;
+  @apply w-2 h-2;
   @apply rounded-full ring-2 ring-opacity-100 ring-gray-200;
+}
+.user-status-online::after {
+  @apply bg-status-online;
+}
+.user-status-offline::after {
+  @apply bg-status-offline;
+}
+.user-status-busy::after {
+  @apply bg-status-busy;
+}
+.user-status-hidden::after {
+  @apply hidden;
 }
 </style>

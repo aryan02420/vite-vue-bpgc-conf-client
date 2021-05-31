@@ -34,6 +34,13 @@ module.exports = {
       red: colors.red
     },
     extend: {
+      colors: {
+        'status-online': '#27ae60',
+        'status-offline': '#e74c3c' ,
+        'status-busy': '#f39c12' ,
+        'action-normal': '#3178C3' ,
+        'action-danger': '#E4842F' ,
+      },
       textColor: {
         'username': '#425FBE',
         'link': '#1D75E7',
@@ -42,6 +49,7 @@ module.exports = {
         'primary': '#3D3D3D',
         'secondary': '#525252',
         'tertiary': '#8E8E8E',
+        'disabled': '#AEAEAE',
       },
       fontFamily: {
         'link': ['Kodchasan', 'Helvetica', 'Arial', 'sans-serif'],
