@@ -5,9 +5,10 @@
     "dev": "vite --host",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview --host",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && push-dir --dir=dist --branch=gh-pages"
   },
   "dependencies": {
+    "push-dir": "^0.4.1",
     "vue": "^3.0.5",
     "vuex": "^4.0.1"
   },
