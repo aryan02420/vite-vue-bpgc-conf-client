@@ -19,9 +19,10 @@ jobs:
         with:
           node-version: 14
       - run: npm ci
-      - run: git config --global user.email "aryan02420@gmail.com"
-      - run: git config --global user.name "aryan02420"
-      - run: git remote set-url origin https://aryan02420:${ACCESS_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+      - run: git config --global user.email "support+actions@github.com"
+      - run: git config --global user.name "github-actions-bot"
+      - run: git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
       - run: npm run deploy
-        env: 
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
