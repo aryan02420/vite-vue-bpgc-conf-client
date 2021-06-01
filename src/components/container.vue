@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col bg-primary px-3 py-3 gap-0.5 shadow-sm rounded-md">
     <div class="flex flex-row items-center justify-between">
-      <UserInfoSmall :username="username" :usercolor="usercolor" :imgsize="userimgsize" :status="'busy'"/>
+      <UserInfoSmall :username="username" :usercolor="usercolor" :imgsize="userimgsize" :status="activityStatus['busy']"/>
       <div class="flex flex-row items-center justify-end gap-1">
         <DateInfo class="-mb-1" :date="date"/>
         <span tabindex="0" class="material-icons material-icons-round -mr-2 rounded-full hover:bg-gray-200 cursor-pointer">more_vert</span>
@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import UserInfoSmall from '@/components/userInfoSmall.vue'
+import UserInfoSmall, {activityStatus} from '@/components/userInfoSmall.vue'
 import VoteButton from '@/components/voteButtons.vue'
 import CommentButton from '@/components/commentButton.vue'
 import DateInfo from '@/components/dateInfo.vue'
@@ -79,7 +79,12 @@ export default defineComponent({
       type: Object as PropType<IPostInfo>,
       required: false
     }
-  },  
+  },
+  data() {
+    return {
+      activityStatus
+    }
+  },
 })
 </script>
 
