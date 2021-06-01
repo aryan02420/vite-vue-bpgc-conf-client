@@ -1,13 +1,13 @@
 <template>
-  <div class="flex flex-row items-center gap-x-3 w-auto text-username"
+  <div class="flex flex-row items-center gap-x-2 w-auto text-username"
     :style="{color: usercolor}">
-    <a :href="profileURL" :class="['m-2 font-bold rounded-full bg-gray-200 select-none', `user-status-${status}`]">
-      <img class="profilepic overflow-hidden rounded-full ring-2 ring-opacity-100 ring-gray-200"
+    <a :href="profileURL" :class="['ml-2 font-bold rounded-full select-none flex-grow-0 flex-shrink-0', `user-status-${status}`]">
+      <img class=" bg-white overflow-hidden rounded-full ring-2 ring-opacity-100 ring-gray-200"
         :src="profileImageURL"
         :alt="username"
         :style="{width:profileImageSize, height:profileImageSize}"/>
     </a>
-    <a :href="profileURL" class="font-bold hover:underline">{{username}}</a>
+    <a :href="profileURL" class="font-bold hover:underline text-sm">{{username}}</a>
   </div>
 </template>
 
@@ -36,7 +36,7 @@ export default defineComponent({
     imgsize: {
       type: Number,
       required: false,
-      default: 1.75
+      default: 1.5
     },
     status: {
       type: String as PropType<activityStatus>,
@@ -49,6 +49,8 @@ export default defineComponent({
       return `/user/${this.username}`
     },
     profileImageURL():string {
+      return `https://identicon-api.herokuapp.com/${this.username}/100?format=png`
+      return `https://github.com/identicons/${this.username}.png`
       return `https://robohash.org/${this.username}?bgset=bg1`
       return 'https://images.unsplash.com/photo-1620455930523-214fe077a4b1?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=64&ixlib=rb-1.2.1&q=80&w=64'
       return `/users/${this.username}/pp.jpeg`
@@ -64,14 +66,23 @@ export default defineComponent({
 <style lang="postcss" scoped>
 a[class^='user-status-'], a[class*='user-status-'] {
   position: relative;
+  z-index: 0;
 }
 a[class^='user-status-']::after, a[class*='user-status-']::after {
+  @apply ring-1;
+}
+a[class^='user-status-']::before, a[class*='user-status-']::before {
+  @apply ring-2 bg-gray-200;
+  z-index: -1;
+}
+a[class^='user-status-']::after, a[class*='user-status-']::after,
+a[class^='user-status-']::before, a[class*='user-status-']::before {
   position: absolute;
   content: '';
   top: 0;
   right: 0;
-  @apply w-2 h-2;
-  @apply rounded-full ring-2 ring-opacity-100 ring-gray-200;
+  @apply w-1.5 h-1.5 ring-opacity-100 ring-gray-200;
+  @apply rounded-full;
 }
 .user-status-online::after {
   @apply bg-status-online;
@@ -82,7 +93,7 @@ a[class^='user-status-']::after, a[class*='user-status-']::after {
 .user-status-busy::after {
   @apply bg-status-busy;
 }
-.user-status-hidden::after {
+.user-status-hidden::before, .user-status-hidden::after {
   @apply hidden;
 }
 </style>

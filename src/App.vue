@@ -1,27 +1,24 @@
 <template>
   <div class="flex flex-col gap-4">
     <Container @click="store.commit('increment')"
-    :username="'dumdum'" :usercolor="'green'"
+    :username="'dUMdUM'" :usercolor="'#EE2525'" :userimgsize="1.5"
     :voted="1" :numVotes="32" :numComments="5" :date="'22 may'">
-      <Post :channel="'general'" :tags="['shitpost', 'lmao', 'komedy']">
-        <Markdown :readMore="true" rawContent="## markdown test. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing."/>
-      </Post>
+      <Meta :channel="'general'" :tags="['shitpost', 'lmao', 'komedy']" />
+      <Markdown :readMore="true" rawContent="## markdown test. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing."/>
     </Container>
     <Container
-    :username="'123'" :usercolor="'magenta'"
+    :username="'noobMaster'" :userimgsize="1.5"
     :voted="-1" :numVotes="101" :numComments="15" :date="'21 may'">
-      <Post :channel="'bitsp'" :tags="['compre', 'pct', 'clear']">
-        <Markdown :readMore="true" rawContent="## markdown test. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing."/>
-      </Post>
+      <Meta :channel="'bitsp'" :tags="['compre', 'pct', 'clear']" />
+      <Markdown :readMore="true" rawContent="## markdown test. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing."/>
     </Container>
-    <Container :date="'22 may'">
-      <Post :channel="'bitsp'" :tags="['compre', 'pct', 'clear']">
-        <Markdown :readMore="true" rawContent="## markdown test. dolor sit amet consectetur adipiscing."/>
-      </Post>
+    <Container :date="'22 may'" :userimgsize="1.5">
+      <Meta :channel="'bitsp'" :tags="['compre', 'pct', 'clear']" />
+      <Markdown :readMore="true" rawContent="## markdown test. dolor sit amet consectetur adipiscing."/>
     </Container>
-    <Container :date="'22 may'">
-      <Post :channel="'bitsp'" :tags="['compre', 'pct', 'clear']"></Post>
-      <Markdown :readMore="true" rawContent="## markdown test. dolor sit amet consectetur adipiscing. dolor sit amet consectetur adipiscing. dolor sit amet consectetur adipiscing. dolor sit amet consectetur adipiscing."/>
+    <Container :date="'22 may'" :userimgsize="1.5">
+      <Meta :channel="'bitsp'" :tags="['compre', 'pct', 'clear']" />
+      <Markdown :readMore="true" rawContent="## markdown test. dolor sit amet consectetur adipiscing. dolor sit amet consectetur adipiscing. dolor sit amet consectetur adipiscing. dolor sit amet consectetur adipiscing. amet consectetur adipiscing. asdasda asda sdfsdfsdf sd"/>
     </Container>
   </div>
 </template>
@@ -30,7 +27,7 @@
 import { ref, defineComponent } from 'vue'
 import { useStore } from "vuex";
 import Container from '@/components/container.vue'
-import Post from '@/components/post.vue'
+import Meta from '@/components/meta.vue'
 import UserInfoSmall from '@/components/userInfoSmall.vue'
 import VoteButton from '@/components/voteButtons.vue'
 import CommentButton from "@/components/commentButton.vue"
@@ -40,7 +37,7 @@ export default defineComponent({
   name: 'App',
   components: {
     Container,
-    Post,
+    Meta,
     UserInfoSmall,
     VoteButton,
     CommentButton,

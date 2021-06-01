@@ -37,7 +37,7 @@ module.exports = {
       colors: {
         'status-online': '#27ae60',
         'status-offline': '#e74c3c' ,
-        'status-busy': '#f39c12' ,
+        'status-busy': '#FFCC10' ,
         'action-normal': '#3178C3' ,
         'action-danger': '#E4842F' ,
       },
@@ -53,7 +53,7 @@ module.exports = {
       },
       fontFamily: {
         'link': ['Kodchasan', 'Helvetica', 'Arial', 'sans-serif'],
-        'body': ['Montserrat', 'Helvetica', 'Arial', 'sans-serif']
+        'body': ['Roboto', 'Helvetica', 'Arial', 'sans-serif']
       },
       backgroundColor: {
         'primary': '#F9F9F9',

@@ -1,16 +1,16 @@
 <template>
-  <div class="flex flex-col bg-primary px-4 py-4 gap-4 shadow-sm rounded-md">
+  <div class="flex flex-col bg-primary px-3 py-3 gap-0.5 shadow-sm rounded-md">
     <div class="flex flex-row items-center justify-between">
-      <UserInfoSmall :username="username" :usercolor="usercolor" :imgsize="userimgsize" />
-      <div class="flex flex-row items-center justify-end gap-2">
-        <DateInfo :date="date"/>
-        <span class="material-icons material-icons-round rounded-full hover:bg-gray-200 p-1 cursor-pointer">more_vert</span>
+      <UserInfoSmall :username="username" :usercolor="usercolor" :imgsize="userimgsize" :status="'busy'"/>
+      <div class="flex flex-row items-center justify-end gap-1">
+        <DateInfo class="-mb-1" :date="date"/>
+        <span tabindex="0" class="material-icons material-icons-round -mr-2 rounded-full hover:bg-gray-200 cursor-pointer">more_vert</span>
       </div>
     </div>
     <div class="mx-2">
       <slot></slot>
     </div>
-    <div class="flex flex-row items-center gap-4">
+    <div class="flex flex-row items-center gap-0 -mt-1">
       <VoteButton :voted="voted" :votes="numVotes" />
       <CommentButton :numComments="numComments" />
     </div>
@@ -54,7 +54,7 @@ export default defineComponent({
     userimgsize: {
       type: Number,
       required: false,
-      default: 2
+      default: 1.5
     },
     voted: {
       type: Number,

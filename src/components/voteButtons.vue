@@ -1,8 +1,12 @@
 <template>
-  <div :class="['flex flex-row items-center gap-x-1 w-auto', { 'text-disabled': isUpvote || isDownvote }]">
-    <span :class="['material-icons material-icons-round rounded-full hover:bg-gray-200 p-1 cursor-pointer', { 'text-action-normal': isUpvote }]" >arrow_upward</span>
-    <span :class="['text-sm', { 'text-action-normal': isUpvote, 'text-action-danger': isDownvote }]" >{{votes}}</span>
-    <span :class="['material-icons material-icons-round rounded-full hover:bg-gray-200 p-1 cursor-pointer', { 'text-action-danger': isDownvote }]" >arrow_downward</span>
+  <div :class="['flex flex-row items-center gap-x-0 w-auto', { 'text-disabled': isUpvote || isDownvote }]">
+    <span tabindex="0"
+      :class="['material-icons material-icons-round rounded-full hover:bg-gray-200 cursor-pointer', { 'text-action-normal': isUpvote }]"
+      >arrow_upward</span>
+    <span :class="['text-sm -mb-0.5', { 'text-action-normal': isUpvote, 'text-action-danger': isDownvote }]" >{{votes}}</span>
+    <span tabindex="0"
+      :class="['material-icons material-icons-round rounded-full hover:bg-gray-200 cursor-pointer', { 'text-action-danger': isDownvote }]"
+      >arrow_downward</span>
   </div>
 </template>
 

@@ -5,14 +5,13 @@
       class="text-xs hover:bg-gray-200 hover:text-secondary px-2 -mx-1 rounded-full"
       :href="tagUrl(tag)">{{tag}}</a>
   </div>
-  <slot></slot>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
-  name: 'Post',
+  name: 'Meta',
   props: {
     channel: {
       type: String,

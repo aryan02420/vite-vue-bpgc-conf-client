@@ -1,7 +1,8 @@
 <template>
-  <div class="flex flex-row items-center gap-x-1 w-auto">
-    <span :class="['material-icons material-icons-round rounded-full hover:bg-gray-200 p-1 cursor-pointer', { 'text-action-normal': active }]" >mode_comment</span>
-    <span :class="['text-sm', { 'text-action-normal': active }]" >{{numComments}}</span>
+  <div tabindex="0" :class="['flex flex-row items-center gap-x-0 w-auto rounded-full hover:bg-gray-200 cursor-pointer pr-2', { 'text-action-normal': active }]">
+    <span class="material-icons material-icons-round -mr-1"
+      >mode_comment</span>
+    <span class="text-sm -mb-0.5" >{{numComments}}</span>
   </div>
 </template>
 
@@ -18,7 +19,7 @@ export default defineComponent({
     active: {
       type: Boolean,
       required: false,
-      default: false
+      default: Math.random()>0.5
     }
   },
   computed: {
