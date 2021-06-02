@@ -1,8 +1,9 @@
 <template>
-  <div tabindex="0" :class="['flex flex-row items-center gap-x-0 w-auto rounded-full hover:bg-gray-200 cursor-pointer pr-2', { 'text-action-normal': active }]">
+  <div tabindex="0" @click="$emit('toggle-comments-event')" @keyup.enter="$emit('toggle-comments-event')"
+    :class="['flex flex-row items-center gap-x-0 w-auto rounded-full hover:bg-gray-200 cursor-pointer pr-2 -mb-0.5', { 'text-action-normal': active }]">
     <span class="material-icons material-icons-round -mr-1"
       >mode_comment</span>
-    <span class="text-sm -mb-0.5" >{{numComments}}</span>
+    <span class="text-sm" >{{numComments}}</span>
   </div>
 </template>
 
@@ -19,10 +20,11 @@ export default defineComponent({
     active: {
       type: Boolean,
       required: false,
-      default: Math.random()>0.5
+      default: false
     }
   },
-  computed: {
+  emits: ['toggle-comments-event'],
+  methods: {
   },
 })
 </script>

@@ -1,10 +1,12 @@
 <template>
-  <div ref="content" @click.once="expand"
-   :class="['markdown overflow-hidden h-auto text-secondary', { 'max-h-24 cursor-pointer': readmore }]"
-    v-html="HTMLContent"></div>
-  <div @click.once="expand" v-if="readmore" tabindex="0"
-   class="text-sm cursor-pointer select-none max-w-max -mt-0.5"
-   >read more...</div>
+  <div>
+    <div ref="content" @click.once="expand"
+     :class="['markdown overflow-hidden h-auto text-secondary', { 'max-h-24 cursor-pointer': readmore }]"
+      v-html="HTMLContent"></div>
+    <div @click="expand" @keyup.enter="expand" v-if="readmore" tabindex="0"
+     class="text-sm cursor-pointer select-none max-w-max -mt-0.5"
+     >read more...</div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -27,11 +29,6 @@ export default defineComponent({
       return `<h1>${this.rawContent}</h1>`
     }
   },
-  methods: {
-    expand() {
-      this.readmore = false
-    }
-  },
   setup(props) {
     return {
       readmore: ref(props.readMore)
@@ -41,6 +38,11 @@ export default defineComponent({
     this.$nextTick(function (this:any) {
       this.readmore &&= (this.$refs.content.clientHeight >= 96)
     })
+  },
+  methods: {
+    expand() {
+      this.readmore = false
+    }
   },
 })
 </script>

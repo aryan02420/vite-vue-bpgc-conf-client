@@ -1,18 +1,24 @@
 <template>
-  <div class="flex flex-col bg-primary px-3 py-3 gap-0.5 shadow-sm rounded-md">
-    <div class="flex flex-row items-center justify-between">
-      <UserInfoSmall :username="username" :usercolor="usercolor" :imgsize="userimgsize" :status="activityStatus['busy']"/>
-      <div class="flex flex-row items-center justify-end gap-1">
-        <DateInfo class="-mb-1" :date="date"/>
-        <span tabindex="0" class="material-icons material-icons-round -mr-2 rounded-full hover:bg-gray-200 cursor-pointer">more_vert</span>
+  <div>
+    <div class="flex flex-col bg-primary px-3 py-3 gap-0.5 shadow-sm rounded-md">
+      <div class="flex flex-row items-center justify-between">
+        <UserInfoSmall :name="postInfo.userName" :color="postInfo.userColor" :imgsize="postInfo.userImgSize" :status="postInfo.userStatus" />
+        <div class="flex flex-row items-center justify-end gap-1">
+          <DateInfo :date="postInfo.date"/>
+          <span tabindex="0" class="material-icons material-icons-round -mr-2 -mt-1 rounded-full hover:bg-gray-200 cursor-pointer">more_vert</span>
+        </div>
+      </div>
+      <div class="mx-2">
+        <slot></slot>
+      </div>
+      <div class="flex flex-row items-center gap-0 -mt-1 -mb-1.5 -ml-0.5">
+        <VoteButton :voted="postInfo.voted" :votes="postInfo.numVotes" />
+        <CommentButton :numComments="postInfo.numComments" :active="commentsVisible"
+          @toggle-comments-event="toggleCommentsVisibility"/>
       </div>
     </div>
-    <div class="mx-2">
-      <slot></slot>
-    </div>
-    <div class="flex flex-row items-center gap-0 -mt-1">
-      <VoteButton :voted="voted" :votes="numVotes" />
-      <CommentButton :numComments="numComments" />
+    <div v-if="commentsVisible" class="bg-secondary divide-y-2 rounded-md">
+      <div v-for="a in [1,2,3]" :key="a">{{a}}</div>
     </div>
   </div>
 </template>
@@ -24,13 +30,17 @@ import VoteButton from '@/components/voteButtons.vue'
 import CommentButton from '@/components/commentButton.vue'
 import DateInfo from '@/components/dateInfo.vue'
 
-interface IPostInfo {
+export interface IPostInfo {
   channel: string,
   tags: string[],
+  date: string,
   voted?: number,
-  numVotes: number,
-  numComments: number,
-  username: String
+  numVotes?: number,
+  numComments?: number,
+  userName?: string,
+  userColor?: string,
+  userStatus?: activityStatus,
+  userImgSize?: number
 }
 
 export default defineComponent({
@@ -42,49 +52,22 @@ export default defineComponent({
     DateInfo
   },
   props: {
-    username: {
-      type: String,
-      required: false,
-      default: "Anonymous"
-    },
-    usercolor: {
-      type: String,
-      required: false
-    },
-    userimgsize: {
-      type: Number,
-      required: false,
-      default: 1.5
-    },
-    voted: {
-      type: Number,
-      required: false,
-      default: 0
-    },
-    numVotes: {
-      type: Number,
-      required: false,
-      default: 0
-    },
-    numComments: {
-      type: Number,
-      required: false,
-      default: 0
-    },
-    date: {
-      type: String,
-      required: true
-    },
     postInfo: {
       type: Object as PropType<IPostInfo>,
-      required: false
+      required: true
     }
   },
   data() {
     return {
-      activityStatus
+      commentsVisible: false
     }
   },
+  methods: {
+    toggleCommentsVisibility() {
+      this.commentsVisible = !this.commentsVisible
+      console.log('ran')
+    }
+  }
 })
 </script>
 
