@@ -11,10 +11,11 @@
       <div class="mx-2">
         <slot name="main"></slot>
       </div>
-      <div class="flex flex-row items-center gap-0 -mt-1 -mb-1.5 -ml-0.5">
+      <div class="flex flex-row items-baseline gap-0 -mt-1 -mb-1.5 -ml-0.5">
         <VoteButton :voted="postInfo.voted" :votes="postInfo.numVotes" />
         <CommentButton :numComments="postInfo.numComments" :active="commentsVisible"
           @toggle-comments-event="toggleCommentsVisibility"/>
+        <ReplyButton @reply-event="toggleCommentsVisibility"/>
       </div>
     </div>
     <div v-if="commentsVisible" class="bg-secondary rounded-b-md pl-5">
@@ -28,6 +29,7 @@ import { defineComponent, PropType } from 'vue'
 import UserInfoSmall, {activityStatus} from '@/components/userInfoSmall.vue'
 import VoteButton from '@/components/voteButtons.vue'
 import CommentButton from '@/components/commentButton.vue'
+import ReplyButton from '@/components/replyButton.vue'
 import DateInfo from '@/components/dateInfo.vue'
 
 export interface IPostInfo {
@@ -49,6 +51,7 @@ export default defineComponent({
     UserInfoSmall,
     VoteButton,
     CommentButton,
+    ReplyButton,
     DateInfo
   },
   props: {
