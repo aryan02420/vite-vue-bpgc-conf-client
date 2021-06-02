@@ -1,6 +1,6 @@
 <template>
-  <div class="shadow-sm rounded-md bg-inherit">
-    <div class="flex flex-col bg-inherit px-3 py-3 gap-0.5">
+  <div>
+    <div class="flex flex-col bg-inherit px-3 py-3 gap-0.5 roaunded-md">
       <div class="flex flex-row items-center justify-between">
         <UserInfoSmall :name="postInfo.userName" :color="postInfo.userColor" :imgsize="postInfo.userImgSize" :status="postInfo.userStatus" />
         <div class="flex flex-row items-center justify-end gap-1">
@@ -17,7 +17,7 @@
           @toggle-comments-event="toggleCommentsVisibility"/>
       </div>
     </div>
-    <div v-if="commentsVisible" class="bg-secondary rounded-b-md pl-6">
+    <div v-if="commentsVisible" class="bg-secondary rounded-b-md pl-5">
       <slot name="comments"></slot>
     </div>
   </div>

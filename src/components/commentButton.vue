@@ -24,8 +24,6 @@ export default defineComponent({
     }
   },
   emits: ['toggle-comments-event'],
-  methods: {
-  },
 })
 </script>
 

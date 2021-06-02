@@ -1,10 +1,12 @@
 <template>
-  <div class="flex flex-col gap-4 bg-primary">
-    <Container @click="store.commit('increment')"
+  <div class="flex flex-col gap-4">
+    <Container  v-for="a in [1,2,3,4,5]" :key="a"
+      class="bg-primary shadow-sm rounded-md"
+      @click="store.commit('increment')"
       :postInfo="{
         userName:'DumDum', userColor:'#EE2525', userImgSize:1.5, userStatus:'offline',
         date:'31 may', channel:'shitpost', tags:['lmao', 'paisa', 'kmao'],
-        voted:1, numVotes:13, numComments:4
+        voted:1, numVotes:a, numComments:a
       }">
       <template v-slot:main>
         <Meta :channel="'general'" :tags="['shitpost', 'lmao', 'komedy']" />
