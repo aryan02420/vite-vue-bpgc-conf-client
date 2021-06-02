@@ -40,6 +40,7 @@ module.exports = {
         'status-busy': '#FFCC10' ,
         'action-normal': '#3178C3' ,
         'action-danger': '#E4842F' ,
+        inherit: 'inherit'
       },
       textColor: {
         'username': '#425FBE',

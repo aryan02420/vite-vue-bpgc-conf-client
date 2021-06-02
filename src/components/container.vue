@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="flex flex-col bg-primary px-3 py-3 gap-0.5 shadow-sm rounded-md">
+  <div class="shadow-sm rounded-md bg-inherit">
+    <div class="flex flex-col bg-inherit px-3 py-3 gap-0.5">
       <div class="flex flex-row items-center justify-between">
         <UserInfoSmall :name="postInfo.userName" :color="postInfo.userColor" :imgsize="postInfo.userImgSize" :status="postInfo.userStatus" />
         <div class="flex flex-row items-center justify-end gap-1">
@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="mx-2">
-        <slot></slot>
+        <slot name="main"></slot>
       </div>
       <div class="flex flex-row items-center gap-0 -mt-1 -mb-1.5 -ml-0.5">
         <VoteButton :voted="postInfo.voted" :votes="postInfo.numVotes" />
@@ -17,8 +17,8 @@
           @toggle-comments-event="toggleCommentsVisibility"/>
       </div>
     </div>
-    <div v-if="commentsVisible" class="bg-secondary divide-y-2 rounded-md">
-      <div v-for="a in [1,2,3]" :key="a">{{a}}</div>
+    <div v-if="commentsVisible" class="bg-secondary rounded-b-md pl-6">
+      <slot name="comments"></slot>
     </div>
   </div>
 </template>
