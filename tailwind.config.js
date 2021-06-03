@@ -57,7 +57,7 @@ module.exports = {
         'body': ['Roboto', 'Helvetica', 'Arial', 'sans-serif']
       },
       backgroundColor: {
-        'primary': '#F9F9F9',
+        'primary': '#F2F2F2',
         'secondary': '#EBEBEB',
       }
     },

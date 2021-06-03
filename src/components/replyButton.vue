@@ -1,6 +1,6 @@
 <template>
   <div tabindex="0" @click="$emit('reply-event')" @keyup.enter="$emit('reply-event')"
-    class="flex flex-row items-center gap-x-0 w-auto rounded-full hover:bg-gray-200 cursor-pointer pr-2">
+    class="flex flex-row items-center gap-x-0 w-auto rounded-full pr-2 hover-effect">
     <span class="material-icons material-icons-round -mr-1">reply</span>
     <span class="text-sm" >reply</span>
   </div>

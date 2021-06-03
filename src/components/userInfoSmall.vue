@@ -2,7 +2,7 @@
   <div class="flex flex-row items-center gap-x-2 w-auto text-username"
     :style="{color: color}">
     <a :href="profileURL" :class="['ml-2 font-bold rounded-full select-none flex-grow-0 flex-shrink-0', `user-status user-status-${status}`]">
-      <img class=" bg-white overflow-hidden rounded-full ring-2 ring-opacity-100 ring-gray-200"
+      <img class=" bg-white overflow-hidden rounded-full ring-2 ring-opacity-30 ring-gray-500"
         :src="profileImageURL"
         :alt="name"
         :style="{width:profileImageSize, height:profileImageSize}"/>
@@ -67,7 +67,7 @@ export default defineComponent({
   @apply ring-0;
 }
 .user-status::before {
-  @apply ring-2 bg-gray-200;
+  @apply ring-2;
   z-index: -1;
 }
 .user-status::after,
@@ -76,7 +76,7 @@ export default defineComponent({
   content: '';
   top: 0;
   right: 0;
-  @apply w-1.5 h-1.5 ring-opacity-100 ring-gray-200 bg-opacity-80;
+  @apply w-1.5 h-1.5 ring-opacity-30 ring-gray-500 bg-opacity-100;
   @apply rounded-full;
 }
 .user-status-online::after {
@@ -92,9 +92,9 @@ export default defineComponent({
   @apply hidden;
 }
 .user-status:focus-visible {
-  @apply ring-4;
+  @apply ring-2;
 }
 .user-status:focus-visible::before {
-  @apply ring-4 ring-offset-transparent ring-offset-2 ring-action-normal;
+  @apply ring-2 ring-action-normal;
 }
 </style>

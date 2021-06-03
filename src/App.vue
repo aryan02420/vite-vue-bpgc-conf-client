@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col gap-4">
-    <Container  v-for="a in [1,2,3,4,5]" :key="a"
+    <Container  v-for="a in [1,2,3,4,5]" :key="a" tabindex="1"
       class="bg-primary shadow-sm rounded-md"
       @click="store.commit('increment')"
       :postInfo="{
         userName:'DumDum', userColor:'#EE2525', userImgSize:1.5, userStatus:'offline',
         date:'31 may', channel:'shitpost', tags:['lmao', 'paisa', 'kmao'],
-        voted:1, numVotes:a, numComments:a
+        voted:1, numVotes:a, numComments:a, showSubComments:true
       }">
       <template v-slot:main>
         <Meta :channel="'general'" :tags="['shitpost', 'lmao', 'komedy']" />
@@ -15,11 +15,11 @@
       <template v-slot:comments>
         
       <Container v-for="a in [1,2,3]" :key="a"
-        class="border-l-2"
+        class="border-l-2 border-gray-500 border-opacity-20"
         :postInfo="{
           userName:'DumDum', userColor:'#EE2525', userImgSize:1.25, userStatus:'online',
           date:'31 may', channel:'shitpost', tags:['lmao', 'paisa', 'kmao'],
-          voted:1, numVotes:13, numComments:4
+          voted:1, numVotes:13, numComments:4, showSubComments:true
         }">
         <template v-slot:main>
           <Markdown :readMore="true" rawContent="## markdown test. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing."/>
@@ -27,11 +27,11 @@
         <template v-slot:comments>
           
           <Container v-for="a in [1,2]" :key="a"
-            class="border-l-2"
+            class="border-l-2 border-gray-600 border-opacity-30"
             :postInfo="{
               userName:'DumDum', userColor:'#EE2525', userImgSize:1, userStatus:'busy',
               date:'31 may', channel:'shitpost', tags:['lmao', 'paisa', 'kmao'],
-              voted:1, numVotes:13, numComments:4
+              voted:1, numVotes:13, numComments:4, showSubComments:false
             }">
             <template v-slot:main>
               <Markdown :readMore="true" rawContent="## markdown test. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing."/>

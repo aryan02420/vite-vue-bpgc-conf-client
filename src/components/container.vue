@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <div class="flex flex-col bg-inherit px-3 py-3 gap-0.5 rounded-md">
+  <div class="overflow-hidden">
+    <div class="flex flex-col bg-inherit px-3 py-3 gap-0.5">
       <div class="flex flex-row items-center justify-between">
         <UserInfoSmall :name="postInfo.userName" :color="postInfo.userColor" :imgsize="postInfo.userImgSize" :status="postInfo.userStatus" />
         <div class="flex flex-row items-center justify-end gap-1">
           <DateInfo :date="postInfo.date"/>
-          <span tabindex="0" class="material-icons material-icons-round -mr-2 -mt-1 rounded-full hover:bg-gray-200 cursor-pointer">more_vert</span>
+          <span tabindex="0" class="material-icons material-icons-round -mr-2 -mt-1 rounded-full hover-effect">more_vert</span>
         </div>
       </div>
       <div class="mx-2">
@@ -13,12 +13,12 @@
       </div>
       <div class="flex flex-row items-baseline gap-0 -mt-1 -mb-1.5 -ml-0.5">
         <VoteButton :voted="postInfo.voted" :votes="postInfo.numVotes" />
-        <CommentButton :numComments="postInfo.numComments" :active="commentsVisible"
+        <CommentButton v-if="postInfo.showSubComments" :numComments="postInfo.numComments" :active="commentsVisible"
           @toggle-comments-event="toggleCommentsVisibility"/>
-        <ReplyButton @reply-event="toggleCommentsVisibility"/>
+        <ReplyButton @reply-event="reply"/>
       </div>
     </div>
-    <div v-if="commentsVisible" class="bg-secondary rounded-b-md pl-5">
+    <div v-if="commentsVisible" class="bg-gray-800 bg-opacity-5 pl-5">
       <slot name="comments"></slot>
     </div>
   </div>
@@ -43,6 +43,7 @@ export interface IPostInfo {
   userColor?: string,
   userStatus?: activityStatus,
   userImgSize?: number
+  showSubComments?: Boolean
 }
 
 export default defineComponent({
@@ -68,7 +69,9 @@ export default defineComponent({
   methods: {
     toggleCommentsVisibility() {
       this.commentsVisible = !this.commentsVisible
-      console.log('ran')
+    },
+    reply() {
+      console.log(this.postInfo)
     }
   }
 })

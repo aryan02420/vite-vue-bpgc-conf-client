@@ -43,4 +43,7 @@ html {
     .material-icons-round {
         font-family: 'Material Icons Round';
     }
+    .hover-effect {
+        @apply  hover:bg-gray-700 hover:bg-opacity-10 cursor-pointer select-none
+    }
 }
