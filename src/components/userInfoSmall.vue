@@ -7,7 +7,7 @@
         :alt="name"
         :style="{width:profileImageSize, height:profileImageSize}"/>
     </a>
-    <a :href="profileURL" class="font-bold hover:underline text-sm">{{name}}</a>
+    <a :href="profileURL" class="font-bold hover:underline text-sm" :data-username="true">{{name}}</a>
   </div>
 </template>
 

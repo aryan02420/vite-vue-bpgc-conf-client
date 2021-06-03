@@ -59,6 +59,9 @@ module.exports = {
       backgroundColor: {
         'primary': '#F2F2F2',
         'secondary': '#EBEBEB',
+      },
+      animation: {
+       'spin-slow': 'spin 3s linear infinite',
       }
     },
   },
