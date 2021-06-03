@@ -1,40 +1,38 @@
 <template>
   <div class="flex flex-col gap-4">
-    <Container  v-for="a in [1,2,3,4,5]" :key="a" tabindex="1"
+    <Container  v-for="post in store.state" :key="post.id" :id="post.id" tabindex="1"
       class="bg-primary shadow-sm rounded-md"
       @click="store.commit('increment')"
       :postInfo="{
-        userName:'DumDum', userColor:'#EE2525', userImgSize:1.5, userStatus:'offline',
-        date:'31 may', channel:'shitpost', tags:['lmao', 'paisa', 'kmao'],
-        voted:1, numVotes:a, numComments:a, showSubComments:true
+        userName:post.username, userImgSize:1.5, date:post.timestamp,
+        voted:post.voted, numVotes:post.numvotes, numComments:post.comments.length, showSubComments:true
       }">
       <template v-slot:main>
-        <Meta :channel="'general'" :tags="['shitpost', 'lmao', 'komedy']" />
-        <Markdown :readMore="true" rawContent="## markdown test. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing."/>
+        <Meta :channel="post.channel" :tags="post.tags" />
+        <Markdown :readMore="true" :rawContent="post.content"/>
       </template>
       <template v-slot:comments>
         
-      <Container v-for="a in [1,2,3]" :key="a"
+      <Container v-for="toplevelcomment in getTopLevelComments(post.comments)" :key="toplevelcomment.id" :id="toplevelcomment.id"
         class="border-l-2 border-gray-500 border-opacity-20"
         :postInfo="{
-          userName:'DumDum', userColor:'#EE2525', userImgSize:1.25, userStatus:'online',
-          date:'31 may', channel:'shitpost', tags:['lmao', 'paisa', 'kmao'],
-          voted:1, numVotes:13, numComments:4, showSubComments:true
+          userName:toplevelcomment.username, userImgSize:1.25, date:toplevelcomment.timestamp,
+          voted:toplevelcomment.voted, numVotes:toplevelcomment.numvotes, numComments:getSubComments(post.comments, toplevelcomment.id).length, showSubComments:true
         }">
         <template v-slot:main>
-          <Markdown :readMore="true" rawContent="## markdown test. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing."/>
+          <Markdown :readMore="true" :rawContent="toplevelcomment.content"/>
         </template>
         <template v-slot:comments>
           
-          <Container v-for="a in [1,2]" :key="a"
+          <Container v-for="subcomment in getSubComments(post.comments, toplevelcomment.id)" :key="subcomment.id" :id="subcomment.id"
             class="border-l-2 border-gray-600 border-opacity-30"
             :postInfo="{
-              userName:'DumDum', userColor:'#EE2525', userImgSize:1, userStatus:'busy',
-              date:'31 may', channel:'shitpost', tags:['lmao', 'paisa', 'kmao'],
-              voted:1, numVotes:13, numComments:4, showSubComments:false
+              userName:subcomment.username, userImgSize:1, date:subcomment.timestamp,
+              voted:subcomment.voted, numVotes:subcomment.numvotes, showSubComments:false
             }">
             <template v-slot:main>
-              <Markdown :readMore="true" rawContent="## markdown test. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing."/>
+              <ReplyInfo :parentID="subcomment.parentcomment" />
+              <Markdown :readMore="true" :rawContent="subcomment.content"/>
             </template>
           </Container>
 
@@ -43,20 +41,6 @@
 
       </template>
     </Container>
-    <!-- <Container
-      :username="'noobMaster'" :userimgsize="1.5"
-      :voted="-1" :numVotes="101" :numComments="15" :date="'21 may'">
-      <Meta :channel="'bitsp'" :tags="['compre', 'pct', 'clear']" />
-      <Markdown :readMore="true" rawContent="## markdown test. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing."/>
-    </Container>
-    <Container :date="'22 may'" :userimgsize="1.5">
-      <Meta :channel="'bitsp'" :tags="['compre', 'pct', 'clear']" />
-      <Markdown :readMore="true" rawContent="## markdown test. dolor sit amet consectetur adipiscing."/>
-    </Container>
-    <Container :date="'22 may'" :userimgsize="1.5">
-      <Meta :channel="'bitsp'" :tags="['compre', 'pct', 'clear']" />
-      <Markdown :readMore="true" rawContent="## markdown test. dolor sit amet consectetur adipiscing. dolor sit amet consectetur adipiscing. dolor sit amet consectetur adipiscing. dolor sit amet consectetur adipiscing. amet consectetur adipiscing. asdasda asda sdfsdfsdf sd"/>
-    </Container> -->
   </div>
 </template>
 
@@ -65,6 +49,7 @@ import { ref, defineComponent } from 'vue'
 import { useStore } from "vuex";
 import Container, { IPostInfo } from '@/components/container.vue'
 import Meta from '@/components/meta.vue'
+import ReplyInfo from '@/components/replyInfo.vue'
 import UserInfoSmall from '@/components/userInfoSmall.vue'
 import VoteButton from '@/components/voteButtons.vue'
 import CommentButton from "@/components/commentButton.vue"
@@ -75,6 +60,7 @@ export default defineComponent({
   components: {
     Container,
     Meta,
+    ReplyInfo,
     UserInfoSmall,
     VoteButton,
     CommentButton,
@@ -82,10 +68,19 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
+    console.log(store);
     return {
       store
     }
   },
+  methods: {
+    getTopLevelComments(commentList:any[]):any {
+      return commentList.filter(comm => comm.toplevelcomment === null)
+    },
+    getSubComments(commentList:any[], TLCID:string):any {
+      return commentList.filter(subcomm => subcomm.toplevelcomment === TLCID)
+    }
+  }
 })
 </script>
 

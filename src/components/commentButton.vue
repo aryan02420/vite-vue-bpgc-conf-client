@@ -1,5 +1,5 @@
 <template>
-  <div tabindex="0" @click="$emit('toggle-comments-event')" @keyup.enter="$emit('toggle-comments-event')"
+  <div tabindex="0" @click="sendToggleCommentsEvent" @keyup.enter="sendToggleCommentsEvent"
     :class="['flex flex-row items-center gap-x-0 w-auto rounded-full pr-2 hover-effect', { 'text-action-normal': active }]">
     <span class="material-icons material-icons-round -mr-1">mode_comment</span>
     <span class="text-sm" >{{numComments}}</span>
@@ -10,6 +10,7 @@
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'CommentButton',
+  emits: ['toggle-comments-event'],
   props: {
     numComments: {
       type: Number,
@@ -22,7 +23,11 @@ export default defineComponent({
       default: false
     }
   },
-  emits: ['toggle-comments-event'],
+  methods: {
+    sendToggleCommentsEvent() {
+      this.$emit('toggle-comments-event')
+    }
+  }
 })
 </script>
 

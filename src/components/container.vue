@@ -14,7 +14,8 @@
       <div class="flex flex-row items-baseline gap-0 -mt-1 -mb-1.5 -ml-0.5">
         <VoteButton :voted="postInfo.voted" :votes="postInfo.numVotes" 
           @vote-event="vote"/>
-        <CommentButton v-if="postInfo.showSubComments" :numComments="postInfo.numComments" :active="commentsVisible"
+        <CommentButton v-if="postInfo.showSubComments && !!postInfo.numComments && postInfo.numComments>0"
+          :numComments="postInfo.numComments" :active="commentsVisible"
           @toggle-comments-event="toggleCommentsVisibility"/>
         <ReplyButton @reply-event="reply"/>
       </div>
@@ -34,8 +35,8 @@ import ReplyButton from '@/components/replyButton.vue'
 import DateInfo from '@/components/dateInfo.vue'
 
 export interface IPostInfo {
-  channel: string,
-  tags: string[],
+  channel?: string,
+  tags?: string[],
   date: string,
   voted?: number,
   numVotes?: number,
@@ -72,10 +73,10 @@ export default defineComponent({
       this.commentsVisible = !this.commentsVisible
     },
     reply() {
-      console.log(this.postInfo)
+      console.log(this.$el.id)
     },
     vote(newVote:number) {
-      console.log(newVote)
+      console.log(this.$el.id, newVote)
     }
   }
 })
