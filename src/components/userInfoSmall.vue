@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row items-center gap-x-2 w-auto text-username"
     :style="{color: color}">
-    <a :href="profileURL" :class="['ml-2 font-bold rounded-full select-none flex-grow-0 flex-shrink-0', `user-status-${status}`]">
+    <a :href="profileURL" :class="['ml-2 font-bold rounded-full select-none flex-grow-0 flex-shrink-0', `user-status user-status-${status}`]">
       <img class=" bg-white overflow-hidden rounded-full ring-2 ring-opacity-100 ring-gray-200"
         :src="profileImageURL"
         :alt="name"
@@ -59,19 +59,19 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
-a[class^='user-status-'], a[class*='user-status-'] {
+.user-status {
   position: relative;
   z-index: 0;
 }
-a[class^='user-status-']::after, a[class*='user-status-']::after {
+.user-status::after {
   @apply ring-0;
 }
-a[class^='user-status-']::before, a[class*='user-status-']::before {
+.user-status::before {
   @apply ring-2 bg-gray-200;
   z-index: -1;
 }
-a[class^='user-status-']::after, a[class*='user-status-']::after,
-a[class^='user-status-']::before, a[class*='user-status-']::before {
+.user-status::after,
+.user-status::before {
   position: absolute;
   content: '';
   top: 0;
@@ -90,5 +90,11 @@ a[class^='user-status-']::before, a[class*='user-status-']::before {
 }
 .user-status-hidden::before, .user-status-hidden::after {
   @apply hidden;
+}
+.user-status:focus-visible {
+  @apply ring-4;
+}
+.user-status:focus-visible::before {
+  @apply ring-4 ring-offset-transparent ring-offset-2 ring-action-normal;
 }
 </style>
