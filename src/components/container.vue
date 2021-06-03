@@ -12,7 +12,8 @@
         <slot name="main"></slot>
       </div>
       <div class="flex flex-row items-baseline gap-0 -mt-1 -mb-1.5 -ml-0.5">
-        <VoteButton :voted="postInfo.voted" :votes="postInfo.numVotes" />
+        <VoteButton :voted="postInfo.voted" :votes="postInfo.numVotes" 
+          @vote-event="vote"/>
         <CommentButton v-if="postInfo.showSubComments" :numComments="postInfo.numComments" :active="commentsVisible"
           @toggle-comments-event="toggleCommentsVisibility"/>
         <ReplyButton @reply-event="reply"/>
@@ -72,6 +73,9 @@ export default defineComponent({
     },
     reply() {
       console.log(this.postInfo)
+    },
+    vote(newVote:number) {
+      console.log(newVote)
     }
   }
 })
