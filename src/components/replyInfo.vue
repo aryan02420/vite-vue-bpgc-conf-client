@@ -1,6 +1,5 @@
 <template>
   <div tabindex="0" @click="scrollToParent()" @keyup.enter="scrollToParent()"
-    v-if="true /* TODO display if parentid !== toplevelcommid */ "  
     class="text-xs font-bold bg-action-normal bg-opacity-25 text-action-normal max-w-max px-1 py-0.5 rounded-full hover:bg-opacity-40 cursor-pointer select-none">
     @{{getUsername()}}
   </div>
@@ -27,10 +26,10 @@ export default defineComponent({
       this.getParentComment()?.scrollIntoView({
         behavior: 'smooth'
       })
-      this.getParentComment().classList.add('animate-pulse')
+      this.getParentComment().classList.add('animate-highlight')
       setTimeout(() => {
-        this.getParentComment().classList.remove('animate-pulse')
-      }, 1000)
+        this.getParentComment().classList.remove('animate-highlight')
+      }, 500)
     },
     getParentComment():HTMLElement|null|any {
       return document.getElementById(this.parentID)

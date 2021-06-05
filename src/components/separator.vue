@@ -1,5 +1,5 @@
 <template>
-  <div class="m-1">&middot;</div>  
+  <div class="m-1 select-none">&middot;</div>  
 </template>
 
 <script lang="ts">

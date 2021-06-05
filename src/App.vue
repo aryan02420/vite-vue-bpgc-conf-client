@@ -31,7 +31,7 @@
               voted:subcomment.voted, numUpvotes:subcomment.numupvotes, numDownvotes:subcomment.numdownvotes, showSubComments:false
             }">
             <template v-slot:main>
-              <ReplyInfo :parentID="subcomment.parentcomment" />
+              <ReplyInfo v-if="subcomment.parentcomment!==subcomment.toplevelcomment" :parentID="subcomment.parentcomment" />
               <Markdown :readMore="true" :rawContent="subcomment.content"/>
             </template>
           </Container>

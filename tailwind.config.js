@@ -60,8 +60,14 @@ module.exports = {
         'primary': '#F2F2F2',
         'secondary': '#EBEBEB',
       },
+      keyframes: {
+       highlight: {
+         '0%, 100%': { opacity: 'initial' },
+         '50%': { opacity: '20%' },
+       }
+      },
       animation: {
-       'spin-slow': 'spin 3s linear infinite',
+       'highlight': 'highlight 500ms linear',
       }
     },
   },
