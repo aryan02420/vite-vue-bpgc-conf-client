@@ -5,7 +5,7 @@
       @click="store.commit('increment')"
       :postInfo="{
         userName:post.username, userImgSize:1.5, date:post.timestamp,
-        voted:post.voted, numVotes:post.numvotes, numComments:post.comments.length, showSubComments:true
+        voted:post.voted, numUpvotes:post.numupvotes, numDownvotes:post.numdownvotes, numComments:post.comments.length, showSubComments:true
       }">
       <template v-slot:main>
         <Meta :channel="post.channel" :tags="post.tags" />
@@ -17,7 +17,7 @@
         class="border-l-2 border-gray-500 border-opacity-20"
         :postInfo="{
           userName:toplevelcomment.username, userImgSize:1.25, date:toplevelcomment.timestamp,
-          voted:toplevelcomment.voted, numVotes:toplevelcomment.numvotes, numComments:getSubComments(post.comments, toplevelcomment.id).length, showSubComments:true
+          voted:toplevelcomment.voted, numUpvotes:toplevelcomment.numupvotes, numDownvotes:toplevelcomment.numdownvotes, numComments:getSubComments(post.comments, toplevelcomment.id).length, showSubComments:true
         }">
         <template v-slot:main>
           <Markdown :readMore="true" :rawContent="toplevelcomment.content"/>
@@ -28,7 +28,7 @@
             class="border-l-2 border-gray-600 border-opacity-30"
             :postInfo="{
               userName:subcomment.username, userImgSize:1, date:subcomment.timestamp,
-              voted:subcomment.voted, numVotes:subcomment.numvotes, showSubComments:false
+              voted:subcomment.voted, numUpvotes:subcomment.numupvotes, numDownvotes:subcomment.numdownvotes, showSubComments:false
             }">
             <template v-slot:main>
               <ReplyInfo :parentID="subcomment.parentcomment" />
@@ -50,9 +50,6 @@ import { useStore } from "vuex";
 import Container, { IPostInfo } from '@/components/container.vue'
 import Meta from '@/components/meta.vue'
 import ReplyInfo from '@/components/replyInfo.vue'
-import UserInfoSmall from '@/components/userInfoSmall.vue'
-import VoteButton from '@/components/voteButtons.vue'
-import CommentButton from "@/components/commentButton.vue"
 import Markdown from "@/components/markdown.vue"
 
 export default defineComponent({
@@ -60,11 +57,8 @@ export default defineComponent({
   components: {
     Container,
     Meta,
-    ReplyInfo,
-    UserInfoSmall,
-    VoteButton,
-    CommentButton,
     Markdown,
+    ReplyInfo,
   },
   setup() {
     const store = useStore();

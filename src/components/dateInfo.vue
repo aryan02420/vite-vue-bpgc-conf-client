@@ -1,5 +1,5 @@
 <template>
-  <span class="text-sm">{{date}}</span>
+  <span class="text-sm">{{dateToString}}</span>
 </template>
 
 <script lang="ts">
@@ -8,10 +8,15 @@ export default defineComponent({
   name: 'DateInfo',
   props: {
     date: {
-      type: String,
+      type: Number,
       required: true,
     },
   },
+  computed: {
+    dateToString():string {
+      return new Date(this.date).toDateString()
+    }
+  }
 })
 </script>
 

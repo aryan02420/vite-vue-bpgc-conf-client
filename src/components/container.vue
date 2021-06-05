@@ -5,19 +5,27 @@
         <UserInfoSmall :name="postInfo.userName" :color="postInfo.userColor" :imgsize="postInfo.userImgSize" :status="postInfo.userStatus" />
         <div class="flex flex-row items-center justify-end gap-1">
           <DateInfo :date="postInfo.date"/>
-          <span tabindex="0" class="material-icons material-icons-round -mr-2 -mt-1 rounded-full hover-effect">more_vert</span>
+          <SmallButton icon="more_vert" class=" -mr-2"/>
         </div>
       </div>
       <div class="mx-2">
         <slot name="main"></slot>
       </div>
-      <div class="flex flex-row items-baseline gap-0 -mt-1 -mb-1.5 -ml-0.5">
-        <VoteButton :voted="postInfo.voted" :votes="postInfo.numVotes" 
-          @vote-event="vote"/>
-        <CommentButton v-if="postInfo.showSubComments && !!postInfo.numComments && postInfo.numComments>0"
-          :numComments="postInfo.numComments" :active="commentsVisible"
-          @toggle-comments-event="toggleCommentsVisibility"/>
-        <ReplyButton @reply-event="reply"/>
+      <div class="flex flex-row items-center gap-0 -mt-1 -mb-1.5 -ml-0.5">
+        <SmallButton :text="postInfo.numUpvotes" icon="arrow_upward"
+          :class="[{'text-action-normal':(postInfo.voted===1), 'text-disabled':(postInfo.voted===-1)}]"
+          @clicked-event="vote(1)" />
+        <SmallButton :text="postInfo.numDownvotes" icon="arrow_downward"
+          :class="[{'text-action-danger':(postInfo.voted===-1), 'text-disabled':(postInfo.voted===1)}]"
+          @clicked-event="vote(-1)" />
+        <Separator v-if="postInfo.showSubComments && commentsExist" />
+        <SmallButton v-if="postInfo.showSubComments && commentsExist"
+          :text="postInfo.numComments" icon="mode_comment"
+          :class="[{'text-action-normal': commentsVisible}]"
+          @clicked-event="toggleCommentsVisibility" />
+        <Separator />
+        <SmallButton text="reply" icon="reply"
+          @clicked-event="reply" />
       </div>
     </div>
     <div v-if="commentsVisible" class="bg-gray-800 bg-opacity-5 pl-5">
@@ -29,17 +37,17 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import UserInfoSmall, {activityStatus} from '@/components/userInfoSmall.vue'
-import VoteButton from '@/components/voteButtons.vue'
-import CommentButton from '@/components/commentButton.vue'
-import ReplyButton from '@/components/replyButton.vue'
+import SmallButton from '@/components/smallButton.vue'
 import DateInfo from '@/components/dateInfo.vue'
+import Separator from '@/components/separator.vue'
 
 export interface IPostInfo {
   channel?: string,
   tags?: string[],
-  date: string,
+  date: number,
   voted?: number,
-  numVotes?: number,
+  numUpvotes?: number,
+  numDownvotes?: number,
   numComments?: number,
   userName?: string,
   userColor?: string,
@@ -52,10 +60,9 @@ export default defineComponent({
   name: 'Container',
   components: {
     UserInfoSmall,
-    VoteButton,
-    CommentButton,
-    ReplyButton,
-    DateInfo
+    SmallButton,
+    DateInfo,
+    Separator,
   },
   props: {
     postInfo: {
@@ -75,8 +82,16 @@ export default defineComponent({
     reply() {
       console.log(this.$el.id)
     },
-    vote(newVote:number) {
+    vote(this:any, newVote:number) {
+      if (this.postInfo.voted == newVote) {
+        newVote = 0   // unvote
+      }
       console.log(this.$el.id, newVote)
+    }
+  },
+  computed: {
+    commentsExist(this:any):boolean {
+      return !!this.postInfo.numComments && this.postInfo.numComments>0
     }
   }
 })
