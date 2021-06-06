@@ -47,3 +47,9 @@ html {
         @apply  hover:bg-gray-700 hover:bg-opacity-10 cursor-pointer select-none
     }
 }
+
+@keyframes highlight {
+    0% { @apply opacity-initial }
+    25% { @apply opacity-20 }
+    100% { @apply opacity-initial }
+}

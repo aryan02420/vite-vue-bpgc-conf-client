@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, inject } from 'vue'
 
 export default defineComponent({
   name: 'ReplyInfo',
@@ -21,21 +21,34 @@ export default defineComponent({
       parentComment: null
     }
   },
+  setup() {
+    const subcommentRefs = inject('subcommentRefs') as {[key: string]: any}
+    return {
+      subcommentRefs
+    }
+  },
   methods: {
-    scrollToParent():void {
-      this.getParentComment()?.scrollIntoView({
-        behavior: 'smooth'
-      })
-      this.getParentComment().classList.add('animate-highlight')
-      setTimeout(() => {
-        this.getParentComment().classList.remove('animate-highlight')
-      }, 500)
+    isInView(el:HTMLElement):boolean {
+      const box = el.getBoundingClientRect();
+      return box.bottom < window.innerHeight && box.top >= 0;
     },
-    getParentComment():HTMLElement|null|any {
-      return document.getElementById(this.parentID)
+    scrollToParent():void {
+      let parentcom:HTMLElement = this.getParentComment().$el
+      if (!this.isInView(parentcom)) {
+        parentcom.scrollIntoView({
+          behavior: 'smooth',
+        })
+      }
+      parentcom.classList.add('animate-highlight')
+      setTimeout(() => {
+        parentcom.classList.remove('animate-highlight')
+      }, 1000)
+    },
+    getParentComment():any {
+      return this.subcommentRefs['c'+this.parentID]
     },
     getUsername():string {
-      return this.getParentComment()?.querySelector('[data-username]')?.innerText
+      return this.getParentComment().postInfo.userName
     }
   },
   mounted() {

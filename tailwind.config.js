@@ -40,7 +40,11 @@ module.exports = {
         'status-busy': '#FFCC10' ,
         'action-normal': '#3178C3' ,
         'action-danger': '#E4842F' ,
-        inherit: 'inherit'
+        inherit: 'inherit',
+        initial: 'initial'
+      },
+      opacity: {
+        initial: 'initial'
       },
       textColor: {
         'username': '#425FBE',
@@ -61,13 +65,9 @@ module.exports = {
         'secondary': '#EBEBEB',
       },
       keyframes: {
-       highlight: {
-         '0%, 100%': { opacity: 'initial' },
-         '50%': { opacity: '20%' },
-       }
       },
       animation: {
-       'highlight': 'highlight 500ms linear',
+       'highlight': 'highlight 1000ms linear',
       }
     },
   },

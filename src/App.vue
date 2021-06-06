@@ -25,6 +25,7 @@
         <template v-slot:comments>
           
           <Container v-for="subcomment in getSubComments(post.comments, toplevelcomment.id)" :key="subcomment.id" :id="subcomment.id"
+            :ref="el => { if (el) subcommentRefs['c'+subcomment.id] = el }"
             class="border-l-2 border-gray-600 border-opacity-30"
             :postInfo="{
               userName:subcomment.username, userImgSize:1, date:subcomment.timestamp,
@@ -45,12 +46,16 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent, provide } from 'vue'
 import { useStore } from "vuex";
 import Container, { IPostInfo } from '@/components/container.vue'
 import Meta from '@/components/meta.vue'
 import ReplyInfo from '@/components/replyInfo.vue'
 import Markdown from "@/components/markdown.vue"
+
+interface IGenericObject {
+  [key: string]: any
+}
 
 export default defineComponent({
   name: 'App',
@@ -63,9 +68,15 @@ export default defineComponent({
   setup() {
     const store = useStore();
     console.log(store);
+    const subcommentRefs:IGenericObject = ref({})
     return {
-      store
+      store,
+      subcommentRefs,
     }
+  },
+  mounted() {
+    provide('subcommentRefs', this.subcommentRefs)
+    console.log(this.subcommentRefs)
   },
   methods: {
     getTopLevelComments(commentList:any[]):any {
