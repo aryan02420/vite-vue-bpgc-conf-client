@@ -4,7 +4,7 @@
     <a :href="profileURL" :class="['ml-2 font-bold rounded-full select-none flex-grow-0 flex-shrink-0', `user-status user-status-${status}`]">
       <img class=" bg-white overflow-hidden rounded-full ring-2 ring-opacity-30 ring-gray-500"
         :src="profileImageURL"
-        :alt="name"
+        :alt="name" loading="lazy"
         :style="{width:profileImageSize, height:profileImageSize}"/>
     </a>
     <a :href="profileURL" class="font-bold hover:underline text-sm" :data-username="true">{{name}}</a>

@@ -1,5 +1,5 @@
 <template>
-  <span class="text-sm">{{dateToString}}</span>
+  <span class="text-xs">{{dateToString}}</span>
 </template>
 
 <script lang="ts">

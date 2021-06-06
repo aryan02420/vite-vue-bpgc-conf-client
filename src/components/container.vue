@@ -12,10 +12,10 @@
         <slot name="main"></slot>
       </div>
       <div class="flex flex-row items-center gap-0 -mt-1 -mb-1.5 -ml-0.5">
-        <SmallButton :text="postInfo.numUpvotes" icon="arrow_upward"
+        <SmallButton :text="postInfo.numUpvotes" icon="thumb_up"
           :class="[{'text-action-normal':(postInfo.voted===1), 'text-disabled':(postInfo.voted===-1)}]"
           @clicked-event="vote(1)" />
-        <SmallButton :text="postInfo.numDownvotes" icon="arrow_downward"
+        <SmallButton :text="postInfo.numDownvotes" icon="thumb_down"
           :class="[{'text-action-danger':(postInfo.voted===-1), 'text-disabled':(postInfo.voted===1)}]"
           @clicked-event="vote(-1)" />
         <Separator v-if="postInfo.showSubComments && commentsExist" />

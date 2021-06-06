@@ -39,7 +39,7 @@ module.exports = {
         'status-offline': '#e74c3c' ,
         'status-busy': '#FFCC10' ,
         'action-normal': '#3178C3' ,
-        'action-danger': '#E4842F' ,
+        'action-danger': '#DB7100' ,
         inherit: 'inherit',
         initial: 'initial'
       },
