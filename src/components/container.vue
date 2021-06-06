@@ -26,6 +26,16 @@
         <Separator />
         <SmallButton text="reply" icon="reply"
           @clicked-event="reply" />
+        <Separator />
+        <SmallButton icon="bookmark"
+          :class="[{'text-action-danger': isBookmarked}]"
+          @clicked-event="bookmark" />
+        <Separator />
+        <SmallButton icon="share"
+          @clicked-event="share" />
+        <Separator />
+        <SmallButton icon="flag"
+          @clicked-event="report" />
       </div>
     </div>
     <div v-if="commentsVisible" class="bg-gray-800 bg-opacity-5 pl-5">
@@ -72,7 +82,8 @@ export default defineComponent({
   },
   data() {
     return {
-      commentsVisible: false
+      commentsVisible: false,
+      isBookmarked: false
     }
   },
   methods: {
@@ -82,11 +93,20 @@ export default defineComponent({
     reply() {
       console.log(this.$el.id)
     },
-    vote(this:any, newVote:number) {
+    share() {
+      console.log(this.$el.id)
+    },
+    report() {
+      console.log(this.$el.id)
+    },
+    vote(newVote:number) {
       if (this.postInfo.voted == newVote) {
         newVote = 0   // unvote
       }
       console.log(this.$el.id, newVote)
+    },
+    bookmark() {
+      this.isBookmarked = ! this.isBookmarked
     }
   },
   computed: {
