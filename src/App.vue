@@ -5,7 +5,8 @@
       @click="store.commit('increment')"
       :postInfo="{
         userName:post.username, userImgSize:1.5, date:post.timestamp,
-        voted:post.voted, numUpvotes:post.numupvotes, numDownvotes:post.numdownvotes, numComments:post.comments.length, showSubComments:true
+        voted:post.voted, numUpvotes:post.numupvotes, numDownvotes:post.numdownvotes,
+        numComments:post.comments.length, showSubComments:true, poll:post.poll
       }">
       <template v-slot:main>
         <Meta :channel="post.channel" :tags="post.tags" />
@@ -17,7 +18,8 @@
         class="border-l-2 border-gray-500 border-opacity-20"
         :postInfo="{
           userName:toplevelcomment.username, userImgSize:1.25, date:toplevelcomment.timestamp,
-          voted:toplevelcomment.voted, numUpvotes:toplevelcomment.numupvotes, numDownvotes:toplevelcomment.numdownvotes, numComments:getSubComments(post.comments, toplevelcomment.id).length, showSubComments:true
+          voted:toplevelcomment.voted, numUpvotes:toplevelcomment.numupvotes, numDownvotes:toplevelcomment.numdownvotes,
+          numComments:getSubComments(post.comments, toplevelcomment.id).length, showSubComments:true
         }">
         <template v-slot:main>
           <Markdown :readMore="true" :rawContent="toplevelcomment.content"/>
@@ -26,10 +28,11 @@
           
           <Container v-for="subcomment in getSubComments(post.comments, toplevelcomment.id)" :key="subcomment.id" :id="subcomment.id"
             :ref="el => { if (el) subcommentRefs['c'+subcomment.id] = el }"
-            class="border-l-2 border-gray-600 border-opacity-30"
+            class="border-l-2 border-gray-500 border-opacity-20"
             :postInfo="{
               userName:subcomment.username, userImgSize:1, date:subcomment.timestamp,
-              voted:subcomment.voted, numUpvotes:subcomment.numupvotes, numDownvotes:subcomment.numdownvotes, showSubComments:false
+              voted:subcomment.voted, numUpvotes:subcomment.numupvotes, numDownvotes:subcomment.numdownvotes,
+              showSubComments:false
             }">
             <template v-slot:main>
               <ReplyInfo v-if="subcomment.parentcomment!==subcomment.toplevelcomment" :parentID="subcomment.parentcomment" />

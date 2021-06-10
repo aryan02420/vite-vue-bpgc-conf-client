@@ -44,7 +44,7 @@ export default defineComponent({
       return `/user/${this.name}`
     },
     profileImageURL():string {
-      return `https://identicon-api.herokuapp.com/${this.name}/100?format=png`
+      return `https://identicon-api.herokuapp.com/${this.name}/100?format=png&config=e4e7f4ff10da40241f3b143f`
       return `https://github.com/identicons/${this.name}.png`
       return `https://robohash.org/${this.name}?bgset=bg1`
       return 'https://images.unsplash.com/photo-1620455930523-214fe077a4b1?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=64&ixlib=rb-1.2.1&q=80&w=64'

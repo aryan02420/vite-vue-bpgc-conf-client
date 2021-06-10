@@ -42,7 +42,7 @@ export default defineComponent({
       parentcom.classList.add('animate-highlight')
       setTimeout(() => {
         parentcom.classList.remove('animate-highlight')
-      }, 1000)
+      }, 1200)
     },
     getParentComment():any {
       return this.subcommentRefs['c'+this.parentID]

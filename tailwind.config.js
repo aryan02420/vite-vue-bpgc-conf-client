@@ -1,7 +1,7 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  mode: 'jit',
+  // mode: 'jit',
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -67,12 +67,18 @@ module.exports = {
       keyframes: {
       },
       animation: {
-       'highlight': 'highlight 1000ms linear',
-      }
+       'highlight': 'highlight 1200ms linear',
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      ringWidth: ['hover', 'active', 'focus', 'focus-visible'],
+      ringColor: ['hover', 'active', 'focus', 'focus-visible'],
+      ringOpacity: ['hover', 'active', 'focus', 'focus-visible'],
+      ringOffsetWidth: ['hover', 'active', 'focus', 'focus-visible'],
+      ringOffsetColor: ['hover', 'active', 'focus', 'focus-visible'],
+    },
   },
   plugins: [],
 }

@@ -10,6 +10,9 @@
       </div>
       <div class="mx-2">
         <slot name="main"></slot>
+        <Poll v-if="!!postInfo.poll" class="my-2"
+          :options="postInfo.poll.options" :voted="postInfo.poll.voted"
+          @clicked-event="pollVote" />
       </div>
       <div class="flex flex-row items-center gap-0 -mt-1 -mb-1.5 -ml-0.5">
         <SmallButton :text="postInfo.numUpvotes" icon="thumb_up"
@@ -38,7 +41,7 @@
           @clicked-event="report" />
       </div>
     </div>
-    <div v-if="commentsVisible" class="bg-gray-800 bg-opacity-5 pl-5">
+    <div v-if="commentsVisible" class="bg-gray-500 bg-opacity-5 pl-5">
       <slot name="comments"></slot>
     </div>
   </div>
@@ -50,6 +53,7 @@ import UserInfoSmall, {activityStatus} from '@/components/userInfoSmall.vue'
 import SmallButton from '@/components/smallButton.vue'
 import DateInfo from '@/components/dateInfo.vue'
 import Separator from '@/components/separator.vue'
+import Poll from '@/components/poll.vue'
 
 export interface IPostInfo {
   channel?: string,
@@ -62,8 +66,9 @@ export interface IPostInfo {
   userName?: string,
   userColor?: string,
   userStatus?: activityStatus,
-  userImgSize?: number
-  showSubComments?: Boolean
+  userImgSize?: number,
+  showSubComments?: Boolean,
+  poll?: any
 }
 
 export default defineComponent({
@@ -73,6 +78,7 @@ export default defineComponent({
     SmallButton,
     DateInfo,
     Separator,
+    Poll,
   },
   props: {
     postInfo: {
@@ -103,6 +109,9 @@ export default defineComponent({
       if (this.postInfo.voted == newVote) {
         newVote = 0   // unvote
       }
+      console.log(this.$el.id, newVote)
+    },
+    pollVote(newVote:number) {
       console.log(this.$el.id, newVote)
     },
     bookmark() {
