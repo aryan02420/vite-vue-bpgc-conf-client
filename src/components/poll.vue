@@ -1,10 +1,13 @@
 <template>
   <div :class="{'display-results': hasVoted}">
-    <div v-for="(option, index) in options" :key="index+1" tabindex="0"
-      :class="['vote-bars relative p-2 my-1 bg-action-normal bg-opacity-0 text-action-normal rounded-md border border-action-normal border-opacity-20 hover:bg-opacity-5 cursor-pointer select-none truncate', {'voted-this': voted === index+1}]"
+    <div v-for="(option, index) in filteredOptions" :key="index+1" tabindex="0"
+      :class="['vote-bars relative py-2 px-4 my-1 text-secondary bg-gray-500 bg-opacity-0 text-sm rounded-md border border-gray-400 border-opacity-50 hover:bg-opacity-10 cursor-pointer flex flex-row justify-between items-center gap-1', {'voted-this': voted === index+1}]"
       :style="styleObj(option.votes)"
       @click="sendPollVote(index+1)" @keyup.enter="sendPollVote(index+1)" 
-      >{{voted === index+1 ? '\u203a ' : ''}}{{option.text}}</div>
+      >
+      <div class="truncate">{{option.text}}</div>
+      <div v-if="hasVoted" class="text-tertiary text-xs">{{Math.floor(getPercentVotes(option.votes))}}%</div>
+    </div>
   </div>
 </template>
 
@@ -47,8 +50,11 @@ export default defineComponent({
     }
   },
   computed: {
+    filteredOptions():any[] {
+      return this.options.filter(option => !!option)
+    },
     totalVotes():number {
-      return this.options.reduce((sum:number, value:IPollOption) => { return sum + value.votes }, 0)
+      return this.filteredOptions.reduce((sum:number, value:IPollOption) => { return sum + value.votes }, 0)
     },
     hasVoted():boolean {
       return this.voted > 0
@@ -58,19 +64,24 @@ export default defineComponent({
 </script>
 
 <style scoped lang="postcss">
-.display-results .vote-bars.voted-this {
-  @apply border-opacity-60
+.vote-bars {
+  z-index: 0
 }
 .display-results .vote-bars::before {
   position: absolute;
   content: '';
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: var(--vote-width);
-  @apply bg-action-normal bg-opacity-10;
+  @apply rounded-md m-0.5 inset-0;
+  width: calc(var(--vote-width) - 0.25rem);
+  @apply bg-gray-400 bg-opacity-30;
+  z-index: -1;
+}
+.display-results .vote-bars.voted-this {
+  @apply border-action-normal;
+}
+.display-results .vote-bars.voted-this * {
+  @apply text-action-normal;
 }
 .display-results .vote-bars.voted-this::before {
-  @apply bg-opacity-20;
+  @apply bg-action-normal bg-opacity-25;
 }
 </style>

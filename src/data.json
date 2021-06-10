@@ -8,7 +8,7 @@
         "numdownvotes": 12,
         "tags": ["apple", "bananananana", "lmaolmao", "thodapaisakmao", "okbhaii", "lol", "abesaale"],
         "channel": "general",
-        "content": "lorem ipsum.",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         "comments":
         [
             {
@@ -80,7 +80,7 @@
         ],
         "poll": {
             "options": [
-                { "text": "option1 option1 option1 option1 option1 option1 option1 option1", "votes": 3 },
+                { "text": "option1 option1 option1 option1 option1 option1 option1 option1 option1 option1 option1", "votes": 3 },
                 { "text": "option2", "votes": 10 },
                 { "text": "option3", "votes": 7 }
             ],
@@ -146,9 +146,10 @@
         ],
         "poll": {
             "options": [
-                { "text": "option1 option1 option1 option1 option1 option1 option1 option1", "votes": 3 },
-                { "text": "option2", "votes": 10 },
-                { "text": "option3", "votes": 7 }
+                { "text": "option1 option1 option1 option1 option1 option1 option1 option1 option1 option1 option1", "votes": 7 },
+                { "text": "option2", "votes": 13 },
+                { "text": "option3", "votes": 12 },
+                null
             ],
             "voted": 3
         }
