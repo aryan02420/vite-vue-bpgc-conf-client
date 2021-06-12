@@ -50,18 +50,18 @@
 
 <script lang="ts">
 import { ref, defineComponent, provide } from 'vue'
-import { useStore } from "vuex";
+import { useStore } from "vuex"
 import Container, { IPostInfo } from '@/components/container.vue'
 import Meta from '@/components/meta.vue'
 import ReplyInfo from '@/components/replyInfo.vue'
-import Markdown from "@/components/markdown.vue"
+import Markdown from '@/components/markdown.vue'
 
 interface IGenericObject {
   [key: string]: any
 }
 
 export default defineComponent({
-  name: 'App',
+  name: 'Feed',
   components: {
     Container,
     Meta,
@@ -70,7 +70,6 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
-    console.log(store);
     const subcommentRefs:IGenericObject = ref({})
     return {
       store,
@@ -92,13 +91,5 @@ export default defineComponent({
 })
 </script>
 
-<style>
-#app {
-  font-family: 'Roboto', 'Montserrat', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-a {
-  font-family: 'Roboto', Helvetica, Arial, sans-serif;
-}
+<style lang="postcss" scoped>
 </style>
