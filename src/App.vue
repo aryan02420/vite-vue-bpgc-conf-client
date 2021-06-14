@@ -1,7 +1,7 @@
 <template>
-  <Feed />
+  <router-view />
   <BottomNav
-    class="fixed w-lg bg-gray-100 bottom-2 rounded-full backdrop-filter backdrop-blur-lg bg-opacity-50 border border-gray-300 shadow-lg p-4 text-center"
+    class="fixed left-1/2 transform -translate-x-1/2 bg-gray-100 bottom-2 rounded-full backdrop-filter backdrop-blur-md bg-opacity-40 border border-gray-300 shadow-lg text-xs text-center"
     @click="store.commit('increment')"
   ></BottomNav>
 </template>
@@ -9,13 +9,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useStore } from 'vuex'
-import Feed from '@/components/feed.vue'
 import BottomNav from '@/components/bottomNav.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    Feed,
     BottomNav,
   },
   setup() {
