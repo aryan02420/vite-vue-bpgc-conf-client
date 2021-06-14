@@ -2,54 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+@layer base {
+  html {
     scroll-behavior: smooth;
-}
+  }
 
-*, *::after, *::before {
+  *,
+  *::after,
+  *::before {
     box-sizing: border-box;
-}
+  }
 
-@layer utilities {
-    * {
-        @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent focus-visible:ring-offset-2 focus-visible:ring-action-normal;
-    }
-    .material-icons {
-        font-family: 'Material Icons';
-        font-weight: normal;
-        font-style: normal;
-        /* font-size: 24px; */
-        display: inline-block;
-        /* line-height: 1; */
-        text-transform: none;
-        letter-spacing: normal;
-        word-wrap: normal;
-        white-space: nowrap;
-        direction: ltr;
-    
-        /* Support for all WebKit browsers. */
-        -webkit-font-smoothing: antialiased;
-        /* Support for Safari and Chrome. */
-        text-rendering: optimizeLegibility;
-    
-        /* Support for Firefox. */
-        -moz-osx-font-smoothing: grayscale;
-    
-        /* Support for IE. */
-        font-feature-settings: 'liga';
+  * {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent focus-visible:ring-offset-2 focus-visible:ring-action-normal;
+  }
 
-        @apply select-none text-xl leading-none;
-    }
-    .material-icons-round {
-        font-family: 'Material Icons Round';
-    }
-    .hover-effect {
-        @apply  hover:bg-gray-700 hover:bg-opacity-10 cursor-pointer select-none
-    }
-}
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
 
-@keyframes highlight {
-    0% { @apply opacity-initial }
-    25% { @apply opacity-20 }
-    100% { @apply opacity-initial }
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+
+    @apply select-none text-xl leading-none;
+  }
+
+  .material-icons-round {
+    font-family: 'Material Icons Round';
+  }
+
+  .hover-effect {
+    @apply hover:bg-gray-700 hover:bg-opacity-10 cursor-pointer select-none;
+  }
+
+  @keyframes highlight {
+    0% {
+      @apply opacity-initial;
+    }
+    25% {
+      @apply opacity-20;
+    }
+    100% {
+      @apply opacity-initial;
+    }
+  }
 }
