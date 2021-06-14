@@ -5,10 +5,7 @@
     Recommended IDE setup:
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
     +
-    <a
-      href="https://marketplace.visualstudio.com/items?itemName=octref.vetur"
-      target="_blank"
-    >
+    <a href="https://marketplace.visualstudio.com/items?itemName=octref.vetur" target="_blank">
       Vetur
     </a>
     or
@@ -41,19 +38,19 @@ export default defineComponent({
   props: {
     msg: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup: () => {
     const count = ref(0)
     return { count }
-  }
+  },
 })
 </script>
 
 <style scoped>
 a {
-  color: #41B883;
+  color: #41b883;
 }
 
 label {

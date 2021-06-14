@@ -1,7 +1,11 @@
 <template>
-  <div tabindex="0" @click="scrollToParent()" @keyup.enter="scrollToParent()"
-    class="text-xs font-bold bg-action-normal bg-opacity-25 text-action-normal max-w-max px-1 py-0.5 rounded-full hover:bg-opacity-40 cursor-pointer select-none">
-    @{{getUsername()}}
+  <div
+    tabindex="0"
+    @click="scrollToParent()"
+    @keyup.enter="scrollToParent()"
+    class="text-xs font-bold bg-action-normal bg-opacity-25 text-action-normal max-w-max px-1 py-0.5 rounded-full hover:bg-opacity-40 cursor-pointer select-none"
+  >
+    @{{ getUsername() }}
   </div>
 </template>
 
@@ -13,27 +17,27 @@ export default defineComponent({
   props: {
     parentID: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      parentComment: null
+      parentComment: null,
     }
   },
   setup() {
-    const subcommentRefs = inject('subcommentRefs') as {[key: string]: any}
+    const subcommentRefs = inject('subcommentRefs') as { [key: string]: any }
     return {
-      subcommentRefs
+      subcommentRefs,
     }
   },
   methods: {
-    isInView(el:HTMLElement):boolean {
-      const box = el.getBoundingClientRect();
-      return box.bottom < window.innerHeight && box.top >= 0;
+    isInView(el: HTMLElement): boolean {
+      const box = el.getBoundingClientRect()
+      return box.bottom < window.innerHeight && box.top >= 0
     },
-    scrollToParent():void {
-      let parentcom:HTMLElement = this.getParentComment().$el
+    scrollToParent(): void {
+      let parentcom: HTMLElement = this.getParentComment().$el
       if (!this.isInView(parentcom)) {
         parentcom.scrollIntoView({
           behavior: 'smooth',
@@ -44,18 +48,17 @@ export default defineComponent({
         parentcom.classList.remove('animate-highlight')
       }, 1200)
     },
-    getParentComment():any {
-      return this.subcommentRefs['c'+this.parentID]
+    getParentComment(): any {
+      return this.subcommentRefs['c' + this.parentID]
     },
-    getUsername():string {
+    getUsername(): string {
       return this.getParentComment().postInfo.userName
-    }
+    },
   },
   mounted() {
     this.$forceUpdate()
-  }
+  },
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

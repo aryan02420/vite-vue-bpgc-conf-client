@@ -1,20 +1,36 @@
 <template>
-  <div class="flex flex-row items-center gap-x-2 w-auto text-username"
-    :style="{color: color}">
-    <a :href="profileURL" :class="['ml-2 font-bold rounded-full select-none flex-grow-0 flex-shrink-0', `user-status user-status-${status}`]">
-      <img class=" bg-white overflow-hidden rounded-full ring-2 ring-opacity-30 ring-gray-500"
+  <div
+    class="flex flex-row items-center gap-x-2 w-auto text-username"
+    :style="{ color: color }"
+  >
+    <a
+      :href="profileURL"
+      :class="[
+        'ml-2 font-bold rounded-full select-none flex-grow-0 flex-shrink-0',
+        `user-status user-status-${status}`,
+      ]"
+    >
+      <img
+        class="bg-white overflow-hidden rounded-full ring-2 ring-opacity-30 ring-gray-500"
         :src="profileImageURL"
-        :alt="name" loading="lazy"
-        :style="{width:profileImageSize, height:profileImageSize}"/>
+        :alt="name"
+        loading="lazy"
+        :style="{ width: profileImageSize, height: profileImageSize }"
+      />
     </a>
-    <a :href="profileURL" class="font-bold hover:underline text-sm" :data-username="true">{{name}}</a>
+    <a
+      :href="profileURL"
+      class="font-bold hover:underline text-sm"
+      :data-username="true"
+      >{{ name }}</a
+    >
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 
-export type activityStatus =  'online' | 'offline' | 'busy' | 'hidden'
+export type activityStatus = 'online' | 'offline' | 'busy' | 'hidden'
 
 export default defineComponent({
   name: 'UserInfoSmall',
@@ -22,39 +38,38 @@ export default defineComponent({
     name: {
       type: String,
       required: false,
-      default: 'Anonymous'
+      default: 'Anonymous',
     },
     color: {
       type: String,
-      required: false
+      required: false,
     },
     imgsize: {
       type: Number,
       required: false,
-      default: 1.5
+      default: 1.5,
     },
     status: {
       type: String as PropType<activityStatus>,
       required: false,
-      default: 'hidden'
-    }
+      default: 'hidden',
+    },
   },
   computed: {
-    profileURL():string {
+    profileURL(): string {
       return `/user/${this.name}`
     },
-    profileImageURL():string {
+    profileImageURL(): string {
       return `https://identicon-api.herokuapp.com/${this.name}/100?format=png&config=e4e7f4ff10da40241f3b143f`
       return `https://github.com/identicons/${this.name}.png`
       return `https://robohash.org/${this.name}?bgset=bg1`
       return 'https://images.unsplash.com/photo-1620455930523-214fe077a4b1?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=64&ixlib=rb-1.2.1&q=80&w=64'
       return `/users/${this.name}/pp.jpeg`
     },
-    profileImageSize():string {
+    profileImageSize(): string {
       return `${this.imgsize}rem`
-    }
-
-  }
+    },
+  },
 })
 </script>
 
@@ -88,7 +103,8 @@ export default defineComponent({
 .user-status-busy::after {
   @apply bg-status-busy;
 }
-.user-status-hidden::before, .user-status-hidden::after {
+.user-status-hidden::before,
+.user-status-hidden::after {
   @apply hidden;
 }
 .user-status:focus-visible {

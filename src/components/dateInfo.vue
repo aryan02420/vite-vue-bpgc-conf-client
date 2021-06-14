@@ -1,5 +1,5 @@
 <template>
-  <span class="text-xs">{{dateToString}}</span>
+  <span class="text-xs">{{ dateToString }}</span>
 </template>
 
 <script lang="ts">
@@ -13,12 +13,11 @@ export default defineComponent({
     },
   },
   computed: {
-    dateToString():string {
+    dateToString(): string {
       return new Date(this.date).toDateString()
-    }
-  }
+    },
+  },
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

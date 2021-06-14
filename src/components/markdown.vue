@@ -1,11 +1,20 @@
 <template>
   <div>
-    <div ref="content" @click.once="expand"
-     :class="['markdown overflow-hidden h-auto text-secondary', { 'max-h-24 cursor-pointer': readmore }]"
-      v-html="HTMLContent"></div>
-    <div @click="expand" @keyup.enter="expand" v-if="readmore" tabindex="0"
-     class="text-sm cursor-pointer select-none max-w-max -mt-0.5"
-     >read more...</div>
+    <div
+      ref="content"
+      @click.once="expand"
+      :class="['markdown overflow-hidden h-auto text-secondary', { 'max-h-24 cursor-pointer': readmore }]"
+      v-html="HTMLContent"
+    ></div>
+    <div
+      @click="expand"
+      @keyup.enter="expand"
+      v-if="readmore"
+      tabindex="0"
+      class="text-sm cursor-pointer select-none max-w-max -mt-0.5"
+    >
+      read more...
+    </div>
   </div>
 </template>
 
@@ -47,5 +56,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped lang="postcss">
-</style>
+<style scoped lang="postcss"></style>

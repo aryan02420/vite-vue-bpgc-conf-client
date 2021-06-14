@@ -1,8 +1,16 @@
 <template>
-  <div tabindex="0" @click="$emit('clicked-event')" @keyup.enter="$emit('clicked-event')"
-    class="flex flex-row items-center gap-x-0 w-auto rounded-full p-2 hover-effect">
-    <span v-if="!!icon" :class="['material-icons material-icons-round', {'mr-1':!!text}]">{{icon}}</span>
-    <span v-if="!!text" class="text-sm mr-0.5">{{text}}</span>
+  <div
+    tabindex="0"
+    @click="$emit('clicked-event')"
+    @keyup.enter="$emit('clicked-event')"
+    class="flex flex-row items-center gap-x-0 w-auto rounded-full p-2 hover-effect"
+  >
+    <span
+      v-if="!!icon"
+      :class="['material-icons material-icons-round', { 'mr-1': !!text }]"
+      >{{ icon }}</span
+    >
+    <span v-if="!!text" class="text-sm mr-0.5">{{ text }}</span>
   </div>
 </template>
 
@@ -15,16 +23,15 @@ export default defineComponent({
     text: {
       type: [Number, String],
       required: false,
-      default: ""
+      default: '',
     },
     icon: {
       type: String,
       required: false,
-      default: ""
-    }
-  }
+      default: '',
+    },
+  },
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

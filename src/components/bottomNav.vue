@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row">
     <div v-if="!Auth.isAuthenticated.value" @click="login" class="hover-effect p-2 rounded-full">Login</div>
-    <div v-if="Auth.isAuthenticated.value || true" @click="logout" class="hover-effect p-2 rounded-full">Logout</div>
+    <div v-if="Auth.isAuthenticated.value || true" @click="logout" class="hover-effect p-2 rounded-full">Logout</div>
     <div v-if="Auth.isAuthenticated.value">{{ Auth.user.value }}</div>
   </div>
 </template>
