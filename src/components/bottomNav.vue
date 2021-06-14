@@ -1,34 +1,22 @@
 <template>
-  <div class="flex flex-row">
-    <div v-if="!Auth.isAuthenticated.value" @click="login" class="hover-effect p-2 rounded-full">Login</div>
-    <div v-if="Auth.isAuthenticated.value || true" @click="logout" class="hover-effect p-2 rounded-full">Logout</div>
-    <div v-if="Auth.isAuthenticated.value">{{ Auth.user.value }}</div>
+  <div class="flex flex-row px-4 py-2 gap-4 rounded-full backdrop-filter backdrop-blur-md bg-gray-100 bg-opacity-40 border border-gray-300 shadow-lg text-xs">
+    <router-link to="/" class="rounded-full"><span class="material-icons material-icons-round p-2 text-2xl hover-effect rounded-full leading-none">home</span></router-link>
+    <router-link to="/" class="rounded-full"><span class="material-icons material-icons-round p-2 text-2xl hover-effect rounded-full leading-none">add_circle</span></router-link>
+    <router-link to="/me" class="rounded-full"><span class="material-icons material-icons-round p-2 text-2xl hover-effect rounded-full leading-none">person</span></router-link>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, inject } from 'vue'
+import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'BottomNav',
-  inject: ['Auth'],
-  props: {},
-  computed: {},
-  methods: {
-    login() {
-      this.Auth.loginWithRedirect()
-    },
-    logout() {
-      this.Auth.logout()
-      this.$router.push({ path: '/' })
-    },
-  },
-  setup() {
-    const Auth: any = inject('Auth')
-    return {
-      Auth,
-    }
-  },
 })
 </script>
 
-<style scoped></style>
+<style lang="postcss" scoped>
+@supports not (backdrop-filter: blur(1px)) {
+  .backdrop-filter {
+    @apply bg-opacity-90;
+  }
+}
+</style>

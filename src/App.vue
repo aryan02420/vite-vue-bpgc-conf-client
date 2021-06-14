@@ -1,7 +1,7 @@
 <template>
   <router-view />
   <BottomNav
-    class="fixed left-1/2 transform -translate-x-1/2 bg-gray-100 bottom-2 rounded-full backdrop-filter backdrop-blur-md bg-opacity-40 border border-gray-300 shadow-lg text-xs text-center"
+    class="fixed left-1/2 transform -translate-x-1/2 bottom-2"
     @click="store.commit('increment')"
   ></BottomNav>
 </template>

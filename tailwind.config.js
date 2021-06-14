@@ -38,8 +38,8 @@ module.exports = {
         'status-online': '#27ae60',
         'status-offline': '#e74c3c' ,
         'status-busy': '#FFCC10' ,
-        'action-normal': '#3178C3' ,
-        'action-danger': '#DB7100' ,
+        'action-normal': '#007185' ,
+        'action-danger': '#AA1716' ,
         inherit: 'inherit',
         initial: 'initial'
       },
@@ -47,7 +47,7 @@ module.exports = {
         initial: 'initial'
       },
       textColor: {
-        'username': '#425FBE',
+        'username': '#1337AE',
         'link': '#1D75E7',
         'upvote': '#1074EA',
         'downvote': '#F09038',

@@ -40,7 +40,7 @@
           ]"
           @clicked-event="vote(-1)"
         />
-        <Separator v-if="postInfo.showSubComments && commentsExist" />
+        <Separator />
         <SmallButton
           v-if="postInfo.showSubComments && commentsExist"
           :text="postInfo.numComments"
@@ -48,7 +48,6 @@
           :class="[{ 'text-action-normal': commentsVisible }]"
           @clicked-event="toggleCommentsVisibility"
         />
-        <Separator />
         <SmallButton text="reply" icon="reply" @clicked-event="reply" />
         <Separator />
         <SmallButton
@@ -56,7 +55,6 @@
           :class="[{ 'text-action-danger': isBookmarked }]"
           @clicked-event="bookmark"
         />
-        <Separator />
         <SmallButton icon="share" @clicked-event="share" />
         <Separator />
         <SmallButton icon="flag" @clicked-event="report" />
