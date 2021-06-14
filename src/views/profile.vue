@@ -15,7 +15,7 @@
   >
     Logout
   </div>
-  <pre v-if="Auth.isAuthenticated.value">{{ JSON.stringify(Auth.user.value, null, 2) }}</pre>
+  <pre v-if="Auth.isAuthenticated.value" class="overflow-x-scroll">{{ JSON.stringify(Auth.user.value, null, 2) }}</pre>
 </template>
 
 <script lang="ts">
