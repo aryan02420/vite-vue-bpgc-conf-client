@@ -1,17 +1,34 @@
 <template>
-  <div>Nav Buttons</div>
+  <div class="flex flex-row">
+    <div v-if="!Auth.isAuthenticated.value" @click="login" class="hover-effect p-2 rounded-full">Login</div>
+    <div v-if="Auth.isAuthenticated.value || true" @click="logout" class="hover-effect p-2 rounded-full">Logout</div>
+    <div v-if="Auth.isAuthenticated.value">{{ Auth.user.value }}</div>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, inject } from 'vue'
 export default defineComponent({
   name: 'BottomNav',
-  props: {
+  inject: ['Auth'],
+  props: {},
+  computed: {},
+  methods: {
+    login() {
+      this.Auth.loginWithRedirect()
+    },
+    logout() {
+      this.Auth.logout()
+      this.$router.push({ path: '/' })
+    },
   },
-  computed: {
-  }
+  setup() {
+    const Auth: any = inject('Auth')
+    return {
+      Auth,
+    }
+  },
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
