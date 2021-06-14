@@ -26,3 +26,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
+          VITE_AUTH_DOMAIN: ${{ secrets.VITE_AUTH_DOMAIN }}
+          VITE_AUTH_CLIENTID: ${{ secrets.VITE_AUTH_CLIENTID }}
+          VITE_AUTH_AUDIENCE: ${{ secrets.VITE_AUTH_AUDIENCE }}
