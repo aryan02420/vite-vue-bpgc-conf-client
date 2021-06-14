@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/components/HelloWorld.vue'
 import Feed from '@/views/feed.vue'
 import Profile from '@/views/profile.vue'
+import NotFound from '@/views/404.vue'
 
 const routes = [
   { path: '/', component: Feed },
   { path: '/me', component: Profile },
-  { path: '/home', component: Home },
+  { path: '/:pathMatch(.*)*', component: NotFound },
 ]
 
 const router = createRouter({
