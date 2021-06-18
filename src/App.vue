@@ -1,4 +1,5 @@
 <template>
+  {{ env }}
   <router-view />
   <BottomNav
     class="fixed left-1/2 transform -translate-x-1/2 bottom-2"
@@ -15,6 +16,11 @@ export default defineComponent({
   name: 'App',
   components: {
     BottomNav,
+  },
+  data() {
+    return {
+      env: import.meta.env.MODE
+    }
   },
   setup() {
     const store = useStore()

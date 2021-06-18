@@ -15,13 +15,6 @@
       </div>
       <div class="mx-2">
         <slot name="main"></slot>
-        <Poll
-          v-if="!!postInfo.poll"
-          class="my-2"
-          :options="postInfo.poll.options"
-          :voted="postInfo.poll.voted"
-          @clicked-event="pollVote"
-        />
       </div>
       <div class="flex flex-row items-center gap-0 -mt-1 -mb-1.5 -ml-0.5">
         <SmallButton
@@ -72,7 +65,6 @@ import UserInfoSmall, { activityStatus } from '@/components/userInfoSmall.vue'
 import SmallButton from '@/components/smallButton.vue'
 import DateInfo from '@/components/dateInfo.vue'
 import Separator from '@/components/separator.vue'
-import Poll from '@/components/poll.vue'
 
 export interface IPostInfo {
   channel?: string
@@ -97,7 +89,6 @@ export default defineComponent({
     SmallButton,
     DateInfo,
     Separator,
-    Poll,
   },
   props: {
     postInfo: {
@@ -128,9 +119,6 @@ export default defineComponent({
       if (this.postInfo.voted == newVote) {
         newVote = 0 // unvote
       }
-      console.log(this.$el.id, newVote)
-    },
-    pollVote(newVote: number) {
       console.log(this.$el.id, newVote)
     },
     bookmark() {
