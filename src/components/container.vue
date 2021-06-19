@@ -107,7 +107,7 @@ export default defineComponent({
       this.commentsVisible = !this.commentsVisible
     },
     reply() {
-      console.log(this.$el.id)
+      console.log('this: ', this.$el.id, '\ntlc: ', this)
     },
     share() {
       console.log(this.$el.id)

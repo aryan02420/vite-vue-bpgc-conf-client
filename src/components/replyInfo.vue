@@ -5,7 +5,7 @@
     @keyup.enter="scrollToParent()"
     class="text-xs font-bold bg-action-normal bg-opacity-10 text-action-normal text-opacity-80 max-w-max px-1 py-0.5 rounded-full hover:bg-opacity-20 cursor-pointer select-none"
   >
-    @{{ parentRef.postInfo.userName }}
+    @{{ parentRef?.subcomment.username }}
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default defineComponent({
   props: {
     parentRef: {
       type: Object,
-      required: true,
+      required: false,
     },
   },
   methods: {
@@ -26,6 +26,7 @@ export default defineComponent({
       return box.bottom < window.innerHeight && box.top >= 0
     },
     scrollToParent(): void {
+      if (!this.parentRef) return
       let parentcom: HTMLElement = this.parentRef.$el
       if (!this.isInView(parentcom)) {
         parentcom.scrollIntoView({
