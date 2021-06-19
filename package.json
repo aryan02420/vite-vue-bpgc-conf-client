@@ -5,7 +5,8 @@
     "dev": "vite --host",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
-    "deploy": "npm run build -- --base=/vite-vue-bpgc-conf-client/ && push-dir --dir=dist --branch=gh-pages"
+    "build:serve": "serve -s dist/",
+    "deploy": "npm run build -- --base=/vite-vue-bpgc-conf-client/ && cp dist/index.html dist/404.html && push-dir --dir=dist --branch=gh-pages"
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.15.0",
