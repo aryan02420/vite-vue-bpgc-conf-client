@@ -1,31 +1,35 @@
 <template>
-  {{ env }}
+  <TopBar class="fixed left-0 right-0 top-0 z-10"/>
   <router-view />
-  <BottomNav
-    class="fixed left-1/2 transform -translate-x-1/2 bottom-2"
-    @click="store.commit('increment')"
-  ></BottomNav>
+  <BottomNav class="fixed left-1/2 transform -translate-x-1/2 bottom-2 z-10" @click="getToken"></BottomNav>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, inject } from 'vue'
 import { useStore } from 'vuex'
 import BottomNav from '@/components/bottomNav.vue'
+import TopBar from '@/components/topBar.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     BottomNav,
+    TopBar,
   },
-  data() {
-    return {
-      env: import.meta.env.MODE
-    }
+  methods: {
+    async getToken() {
+      if (!this.Auth.isAuthenticated.value) return
+      let token = await this.Auth.getTokenSilently()
+      token = JSON.parse(window.atob(token.split('.')[1]))
+      console.log(token)
+    },
   },
   setup() {
     const store = useStore()
     console.log(store)
+    const Auth: any = inject('Auth')
     return {
+      Auth,
       store,
     }
   },

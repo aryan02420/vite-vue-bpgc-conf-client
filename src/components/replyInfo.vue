@@ -23,13 +23,14 @@ export default defineComponent({
   methods: {
     isInView(el: HTMLElement): boolean {
       const box = el.getBoundingClientRect()
-      return box.bottom < window.innerHeight && box.top >= 0
+      return box.bottom + 64 < window.innerHeight && box.top >= 0 + 48
     },
     scrollToParent(): void {
       if (!this.parentRef) return
       let parentcom: HTMLElement = this.parentRef.$el
       if (!this.isInView(parentcom)) {
         parentcom.scrollIntoView({
+          block: 'nearest',
           behavior: 'smooth',
         })
       }

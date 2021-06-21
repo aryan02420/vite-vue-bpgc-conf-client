@@ -56,6 +56,9 @@ module.exports = {
         'tertiary': '#8E8E8E',
         'disabled': '#AEAEAE',
       },
+      fill: {
+        transparent: 'transparent',
+      },
       fontFamily: {
         'link': ['Kodchasan', 'Helvetica', 'Arial', 'sans-serif'],
         'body': ['Roboto', 'Helvetica', 'Arial', 'sans-serif']

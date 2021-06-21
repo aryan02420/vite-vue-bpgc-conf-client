@@ -1,4 +1,7 @@
 {
-    "css.lint.unknownAtRules": "ignore",
-    // "vetur.validation.style": false
+  "css.lint.unknownAtRules": "ignore",
+  // "vetur.validation.style": false,
+  "files.exclude": {
+    "**/node_modules/**": true
+  }
 }

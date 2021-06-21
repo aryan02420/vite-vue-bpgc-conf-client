@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-hidden">
+  <div class="overflow-hidden scroll-margin">
     <div class="flex flex-col bg-inherit px-3 py-3 gap-0.5">
       <div class="flex flex-row items-center justify-between">
         <UserInfoSmall
@@ -133,4 +133,8 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.scroll-margin {
+  scroll-margin-top: 3rem;
+  scroll-margin-bottom: 4rem;
+}</style>
