@@ -1,6 +1,12 @@
 <template>
-  <TopBar class="fixed left-0 right-0 top-0 z-10"/>
-  <router-view />
+  <TopBar class="fixed left-0 right-0 top-0 z-10" />
+  <router-view v-slot="{ Component }">
+    <transition name="fade-down" mode="out-in">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </transition>
+  </router-view>
   <BottomNav class="fixed left-1/2 transform -translate-x-1/2 bottom-2 z-10" @click="getToken"></BottomNav>
 </template>
 
@@ -45,5 +51,13 @@ export default defineComponent({
 }
 a {
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
+}
+.fade-down-enter-active,
+.fade-down-leave-active {
+  transition: opacity 200ms ease-out;
+}
+.fade-down-enter-from,
+.fade-down-leave-to {
+  opacity: 0;
 }
 </style>

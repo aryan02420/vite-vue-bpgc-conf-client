@@ -13,7 +13,7 @@
       @keyup.enter="sendPollVote(index + 1)"
     >
       <div class="truncate">{{ option.text }}</div>
-      <div v-if="hasVoted" class="text-tertiary text-xs">
+      <div class="poll-result text-tertiary text-xs ml-2 opacity-0">
         {{ Math.floor(getPercentVotes(option.votes)) }}%
       </div>
     </div>
@@ -44,6 +44,7 @@ export default defineComponent({
   },
   methods: {
     getPercentVotes(currentVotes: number): number {
+      return Math.random()*100
       return (currentVotes / this.totalVotes) * 100
     },
     styleObj(index: number): any {
@@ -78,13 +79,18 @@ export default defineComponent({
 .vote-bars {
   z-index: 0;
 }
-.display-results .vote-bars::before {
+.vote-bars::before {
   position: absolute;
   content: '';
-  @apply rounded-md m-0.5 inset-0;
-  width: calc(var(--vote-width) - 0.25rem);
-  @apply bg-gray-400 bg-opacity-30;
+  @apply m-0.5 inset-0 w-0 bg-opacity-0;
+  border-radius: 0.25rem; /* rounded_sm = 0.125rem, rounded_md = 0.375rem */
   z-index: -1;
+  transition: all 50ms ease-in;
+}
+.display-results .vote-bars::before {
+  width: calc(var(--vote-width) - 0.25rem); /* m_0.5 = 0.125rem, subtract 0.125*2 to correct width */
+  @apply bg-gray-400 bg-opacity-30;
+  transition: all 500ms ease-out;
 }
 .display-results .vote-bars.voted-this {
   @apply border-action-normal;
@@ -94,5 +100,12 @@ export default defineComponent({
 }
 .display-results .vote-bars.voted-this::before {
   @apply bg-action-normal bg-opacity-25;
+}
+.poll-result {
+  transition: opacity 200ms;
+}
+.display-results .poll-result {
+  @apply opacity-100;
+  transition: opacity 100ms 400ms;
 }
 </style>

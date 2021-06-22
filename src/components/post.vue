@@ -18,7 +18,7 @@
     <template v-slot:main>
       <Meta :channel="post.channel" :tags="post.tags" />
       <Markdown :readMore="true" :rawContent="post.content" />
-      <Poll v-if="!!post.poll" class="my-2" :options="post.poll.options" :voted="post.poll.voted" @clicked-event="pollVote" />
+      <Poll v-if="!!post.poll" class="my-2" :options="post.poll.options" :voted="tempvote || 0*post.poll.voted" @clicked-event="pollVote" />
     </template>
     <template v-slot:comments>
       <Comment v-for="toplevelcomment in getTopLevelComments(post.comments)" :key="toplevelcomment.id" :toplevelcomment="toplevelcomment" :post="post" />
@@ -49,12 +49,18 @@ export default defineComponent({
       required: true,
     },
   },
+  data() {
+    return {
+      tempvote:1 // DELETEME
+    }
+  },
   methods: {
     getTopLevelComments(commentList: any[]): any[] {
       return commentList.filter((comm) => comm.toplevelcomment === null)
     },
     pollVote(newVote: number) {
       console.log(this.$el.id, newVote)
+      this.tempvote = newVote
     },
   },
 })

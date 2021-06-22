@@ -16,7 +16,7 @@
       <div class="mx-2">
         <slot name="main"></slot>
       </div>
-      <div class="flex flex-row items-center gap-0 -mt-1 -mb-1.5 -ml-0.5">
+      <div class="flex flex-row items-center gap-0 -mt-1 -mb-1">
         <SmallButton
           :text="postInfo.numUpvotes"
           icon="thumb_up"
@@ -53,9 +53,11 @@
         <SmallButton icon="flag" @clicked-event="report" />
       </div>
     </div>
-    <div v-if="commentsVisible" class="bg-gray-500 bg-opacity-5 pl-5">
-      <slot name="comments"></slot>
-    </div>
+    <transition name="collapse">
+      <div v-if="commentsVisible" class="bg-gray-500 bg-opacity-5 pl-5">
+        <slot name="comments"></slot>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -133,8 +135,19 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .scroll-margin {
   scroll-margin-top: 3rem;
   scroll-margin-bottom: 4rem;
-}</style>
+}
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: all 100ms ease-out;
+}
+.collapse-enter-from,
+.collapse-leave-to {
+  transform-origin: 50% 0%;
+  transform: scaleY(0);
+  opacity: 0;
+}
+</style>

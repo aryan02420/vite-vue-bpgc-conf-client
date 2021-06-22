@@ -43,6 +43,7 @@
 
   .hover-effect {
     @apply hover:bg-gray-700 hover:bg-opacity-10 cursor-pointer select-none;
+    @apply transform hover:scale-110
   }
 
   @keyframes highlight {
