@@ -51,7 +51,7 @@ export default defineComponent({
   },
   data() {
     return {
-      tempvote:1 // DELETEME
+      tempvote:0 // DELETEME
     }
   },
   methods: {

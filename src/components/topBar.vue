@@ -1,12 +1,12 @@
 <template>
   <div
-    class="flex flex-row justify-between items-center mb-4 p-2 backdrop-filter backdrop-blur-md bg-blueGray-300 bg-opacity-40 border border-gray-300 shadow-sm"
+    class="flex flex-row justify-between items-center mb-4 p-2 backdrop-filter backdrop-blur-md bg-blueGray-300 bg-opacity-40 border border-gray-300 shadow-sm text-primary"
   >
-    <div>
-      {{ env }}
-    </div>
-    <div class="flex flex-row gap-2 items-center justify-end">
-      <span v-if="Auth.isAuthenticated.value">{{ Auth.user.value.sub.split('|')[1] }}</span>
+    <h1 class="text-2xl">
+      BPGCC
+    </h1>
+    <div class="flex flex-row gap-2 items-center justify-end text-secondary">
+      <span v-if="Auth.isAuthenticated.value">{{ Auth.user.value.email }}</span>
       <Login class="px-2 py-1" />
       <Logout class="px-2 py-1" />
     </div>
@@ -22,11 +22,6 @@ export default defineComponent({
   components: {
     Login,
     Logout,
-  },
-  data() {
-    return {
-      env: import.meta.env.MODE,
-    }
   },
   setup() {
     const Auth: any = inject('Auth')

@@ -7,7 +7,7 @@
       </keep-alive>
     </transition>
   </router-view>
-  <BottomNav class="fixed left-1/2 transform -translate-x-1/2 bottom-2 z-10" @click="getToken"></BottomNav>
+  <BottomNav class="fixed left-1/2 transform -translate-x-1/2 bottom-2 z-10" />
 </template>
 
 <script lang="ts">
