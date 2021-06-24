@@ -1,11 +1,6 @@
 <template>
   <div class="flex flex-col gap-4 max-w-lg mx-auto mb-3">
-    <Post
-      v-for="post in store.state"
-      :key="post.id"
-      tabindex="1"
-      :post="post"
-    />
+    <Post v-for="post in store.state.data" :key="post.id" tabindex="1" :post="post" />
   </div>
 </template>
 
@@ -13,10 +8,6 @@
 import { ref, defineComponent, provide } from 'vue'
 import { useStore } from 'vuex'
 import Post from '@/components/post.vue'
-
-interface IGenericObject {
-  [key: string]: any
-}
 
 export default defineComponent({
   name: 'Feed',
