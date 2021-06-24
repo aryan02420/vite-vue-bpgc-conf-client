@@ -1,24 +1,33 @@
 <template>
-  <div class="p-2">
-    <h2>Settings</h2>
-    <h3>About</h3>
-    <h4>mode</h4>
-    <p>{{env}}</p>
-    <h4>sha</h4>
-    <p>{{ gh_sha.substr(0, 7) }}</p>
-    <h4>ref</h4>
-    <p>{{ gh_ref }}</p>
-    <h3>Preferences</h3>
-    <h4>Theme</h4>
-    <p>Light</p>
+  <div class="max-w-lg mx-auto mb-3 -mt-5">
+    <CellGroup title="Preferences">
+      <Cell title="Theme" value="Light" />
+    </CellGroup>
+    <CellGroup title="About">
+      <Cell title="Source Code" />
+      <Cell title="Privacy Policy" />
+      <Cell title="FAQ" />
+    </CellGroup>
+    <CellGroup title="Build Info">
+      <Cell title="Mode" :value="env" />
+      <Cell title="SHA" :value="gh_sha.substr(0, 7)" />
+      <Cell title="Ref" :value="gh_ref" />
+      <Cell title="Release" value="0.0.0" />
+    </CellGroup>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import Cell from '@/components/cell.vue'
+import CellGroup from '@/components/cellGroup.vue'
 
 export default defineComponent({
   name: 'Settings',
+  components: {
+    Cell,
+    CellGroup,
+  },
   data() {
     return {
       env: import.meta.env.MODE,
@@ -29,14 +38,4 @@ export default defineComponent({
 })
 </script>
 
-<style lang="postcss" scoped>
-h2 {
-  @apply text-3xl text-primary mt-8;
-}
-h3 {
-  @apply text-2xl text-primary mt-4;
-}
-h4 {
-  @apply text-xl text-secondary mt-2;
-}
-</style>
+<style lang="postcss" scoped></style>

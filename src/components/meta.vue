@@ -8,7 +8,7 @@
     <a
       v-for="tag in tags"
       :key="tag"
-      class="text-xs hover-effect hover:text-secondary px-2 -mx-1 rounded-full"
+      class="text-xs hover:text-secondary px-2 -mx-1 rounded-full"
       :href="tagUrl(tag)"
       >{{ tag }}</a
     >
