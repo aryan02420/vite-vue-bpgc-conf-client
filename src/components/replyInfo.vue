@@ -11,6 +11,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+const TopBarHeight = 48
+const BottomNavHeight = 64
 
 export default defineComponent({
   name: 'ReplyInfo',
@@ -23,14 +25,15 @@ export default defineComponent({
   methods: {
     isInView(el: HTMLElement): boolean {
       const box = el.getBoundingClientRect()
-      return (box.bottom + 64) < window.innerHeight && box.top >= (0 + 48)
+      return box.bottom < window.innerHeight - BottomNavHeight && box.top >= TopBarHeight
     },
     scrollToParent(): void {
       if (!this.parentRef) return
       let parentcom: HTMLElement = this.parentRef.$el
+      let scrollpos = parentcom.getBoundingClientRect().top + window.scrollY - TopBarHeight
       if (!this.isInView(parentcom)) {
-        parentcom.scrollIntoView({
-          block: 'nearest',
+        window.scrollTo({
+          top: scrollpos,
           behavior: 'smooth',
         })
       }
