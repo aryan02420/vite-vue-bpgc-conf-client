@@ -7,7 +7,7 @@
     <h4>sha</h4>
     <p>{{ gh_sha.substr(0, 7) }}</p>
     <h4>ref</h4>
-    <p>{{ gh_ref.split('/').slice(-1)[0] }}</p>
+    <p>{{ gh_ref }}</p>
     <h3>Preferences</h3>
     <h4>Theme</h4>
     <p>Light</p>

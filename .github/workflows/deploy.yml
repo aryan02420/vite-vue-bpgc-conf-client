@@ -29,5 +29,5 @@ jobs:
           VITE_AUTH_DOMAIN: ${{ secrets.VITE_AUTH_DOMAIN }}
           VITE_AUTH_CLIENTID: ${{ secrets.VITE_AUTH_CLIENTID }}
           VITE_AUTH_AUDIENCE: ${{ secrets.VITE_AUTH_AUDIENCE }}
-          VITE_GITHUB_SHA: ${{ env.GITHUB_SHA }}
-          VITE_GITHUB_REF: ${{ env.GITHUB_REF }}
+          VITE_GITHUB_SHA: ${{ github.sha }}
+          VITE_GITHUB_REF: ${{ github.ref }}
