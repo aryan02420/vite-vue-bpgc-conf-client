@@ -45,7 +45,7 @@ export default defineComponent({
   },
   mounted() {
     this.$nextTick(function (this:any) {
-      this.readmore &&= (this.$refs.content.clientHeight >= 96)
+      this.readmore &&= (this.$refs.content.scrollHeight > 96)
     })
   },
   methods: {

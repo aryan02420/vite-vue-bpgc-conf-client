@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-row justify-between items-center mb-4 p-2 backdrop-filter backdrop-blur-md bg-blueGray-300 bg-opacity-40 border border-gray-300 shadow-sm text-primary"
+    class="flex flex-row justify-between items-center mb-4 p-2 backdrop-filter backdrop-blur-md bg-blueGray-300 bg-opacity-40 border-b border-gray-300 shadow-sm text-primary"
   >
     <h1 class="text-2xl">
       BPGCC

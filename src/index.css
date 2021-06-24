@@ -43,7 +43,7 @@
 
   .hover-effect {
     @apply hover:bg-gray-700 hover:bg-opacity-10 cursor-pointer select-none;
-    @apply transform hover:scale-110
+    @apply transform hover:scale-110;
   }
 
   @keyframes highlight {
@@ -56,5 +56,19 @@
     100% {
       @apply opacity-initial;
     }
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-md;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-action-normal;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-blueGray-200;
+    border-radius: 16px;
   }
 }

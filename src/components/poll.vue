@@ -82,15 +82,15 @@ export default defineComponent({
 .vote-bars::before {
   position: absolute;
   content: '';
-  @apply m-0.5 inset-0 w-0 bg-opacity-0;
+  @apply m-0.5 inset-0 w-0;
   border-radius: 0.25rem; /* rounded_sm = 0.125rem, rounded_md = 0.375rem */
   z-index: -1;
-  transition: all 50ms ease-in;
+  transition: width 50ms ease-in;
 }
 .display-results .vote-bars::before {
   width: calc(var(--vote-width) - 0.25rem); /* m_0.5 = 0.125rem, subtract 0.125*2 to correct width */
   @apply bg-gray-400 bg-opacity-30;
-  transition: all 500ms ease-out;
+  transition: width 500ms ease-out;
 }
 .display-results .vote-bars.voted-this {
   @apply border-action-normal;

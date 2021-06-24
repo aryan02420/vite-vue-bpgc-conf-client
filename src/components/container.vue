@@ -146,8 +146,13 @@ export default defineComponent({
 }
 .collapse-enter-from,
 .collapse-leave-to {
-  transform-origin: 50% 0%;
   transform: scaleY(0);
   opacity: 0;
+}
+.collapse-enter-from,
+.collapse-leave-to
+.collapse-enter-to,
+.collapse-leave-from {
+  transform-origin: 50% 0%;
 }
 </style>
