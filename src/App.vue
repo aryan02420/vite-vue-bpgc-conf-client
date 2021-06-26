@@ -15,7 +15,7 @@
   <BottomNav
     class="fixed left-1/2 transform -translate-x-1/2 mb-2 bottom-0 z-10 duration-500"
     :style="{
-      bottom: `${scrollNormPos > 0 ? -1 * scrollNormPos : 0}px`,
+      bottom: `${scrollNormPos > 96 ? -1 * (scrollNormPos - 96) : 0}px`,
     }"
   />
 </template>
@@ -33,17 +33,6 @@ export default defineComponent({
     BottomNav,
     TopBar,
   },
-  // data() {
-  //   return {
-  //     scrollPos: {
-  //       curr: 0,
-  //       prev: 0,
-  //       pivot: 0,
-  //       dir: 1,
-  //       norm: 0,
-  //     },
-  //   }
-  // },
   methods: {
     async getToken() {
       if (!this.Auth.isAuthenticated.value) return
@@ -51,19 +40,6 @@ export default defineComponent({
       token = JSON.parse(window.atob(token.split('.')[1]))
       console.log(token)
     },
-    // _onscroll: function () {
-    //   console.log(Date.now())
-    //   let curr = window.scrollY
-    //   let prev = this.scrollPos.curr
-    //   let dir = Math.sign(curr - prev)
-    //   if (dir !== this.scrollPos.dir) {
-    //     this.scrollPos.pivot = curr
-    //   }
-    //   this.scrollPos.norm = curr - this.scrollPos.pivot
-    //   this.scrollPos.prev = this.scrollPos.curr
-    //   this.scrollPos.curr = curr
-    //   this.scrollPos.dir = dir
-    // },
   },
   created() {
     document.addEventListener('scroll', this.onScroll)
@@ -86,7 +62,12 @@ export default defineComponent({
       let curr = window.scrollY
       let prev = scrollPos.curr
       let dir = Math.sign(curr - prev)
-      if (dir !== scrollPos.dir) {
+      if (
+        dir !== scrollPos.dir ||
+        curr < 64 ||
+        window.scrollY + window.innerHeight >
+          document.documentElement.scrollHeight - 96
+      ) {
         scrollPos.pivot = curr
       }
       scrollNormPos.value = curr - scrollPos.pivot
@@ -94,7 +75,7 @@ export default defineComponent({
       scrollPos.curr = curr
       scrollPos.dir = dir
     }
-    const onScroll = throttle(200, true, _onscroll)
+    const onScroll = throttle(250, false, _onscroll)
     return {
       Auth,
       store,
@@ -102,7 +83,6 @@ export default defineComponent({
       scrollNormPos,
     }
   },
-  computed: {},
 })
 </script>
 
