@@ -2,7 +2,7 @@
   <TopBar
     class="fixed left-0 right-0 top-0 z-10 duration-500"
     :style="{
-      top: `${this.scrollNormPos > 0 ? -1 * this.scrollNormPos : 0}px`,
+      top: `${scrollNormPos > 0 ? -1 * scrollNormPos : 0}px`,
     }"
   />
   <router-view v-slot="{ Component }">
@@ -15,7 +15,7 @@
   <BottomNav
     class="fixed left-1/2 transform -translate-x-1/2 mb-2 bottom-0 z-10 duration-500"
     :style="{
-      bottom: `${this.scrollNormPos > 0 ? -1 * this.scrollNormPos : 0}px`,
+      bottom: `${scrollNormPos > 0 ? -1 * scrollNormPos : 0}px`,
     }"
   />
 </template>
