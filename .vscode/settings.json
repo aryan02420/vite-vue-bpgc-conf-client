@@ -3,5 +3,8 @@
   // "vetur.validation.style": false,
   "files.exclude": {
     "**/node_modules/**": true
+  },
+  "editor.quickSuggestions": {
+    "strings": true
   }
 }
