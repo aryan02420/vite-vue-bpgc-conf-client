@@ -1,7 +1,7 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  // mode: 'jit',
+  mode: 'jit',
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -15,10 +15,10 @@ module.exports = {
         'status-online': '#27ae60',
         'status-offline': '#e74c3c',
         'status-busy': '#FFCC10',
-        'action-normal': '#007185',
-        'action-danger': '#AA1716',
         inherit: 'inherit',
         initial: 'initial',
+        'color-primary': 'rgb(var(--color-primary))',
+        'color-secondary': 'rgb(var(--color-secondary))',
       },
       opacity: {
         initial: 'initial',
@@ -28,10 +28,12 @@ module.exports = {
         link: '#1D75E7',
         upvote: '#1074EA',
         downvote: '#F09038',
-        primary: '#3D3D3D',
-        secondary: '#525252',
-        tertiary: '#8E8E8E',
-        disabled: '#AEAEAE',
+        primary: 'rgba(var(--text-primary), var(--tw-text-opacity, 1))',
+        secondary: 'rgba(var(--text-secondary), var(--tw-text-opacity, 1))',
+        tertiary: 'rgba(var(--text-tertiary), var(--tw-text-opacity, 1))',
+        disabled: 'rgba(var(--text-disabled), var(--tw-text-opacity, 1))',
+        'color-primary': 'rgba(var(--color-primary), var(--tw-text-opacity, 1))',
+        'color-secondary': 'rgba(var(--color-secondary), var(--tw-text-opacity, 1))',
       },
       fill: {
         transparent: 'transparent',
@@ -41,8 +43,18 @@ module.exports = {
         body: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       },
       backgroundColor: {
-        primary: '#F2F2F2',
-        secondary: '#EBEBEB',
+        primary: 'rgba(var(--bg-primary), var(--tw-bg-opacity, 1))',
+        secondary: 'rgba(var(--bg-secondary), var(--tw-bg-opacity, 1))',
+        'color-primary': 'rgba(var(--color-primary), var(--tw-bg-opacity, 1))',
+        'color-secondary': 'rgba(var(--color-secondary), var(--tw-bg-opacity, 1))',
+      },
+      ringColor: {
+        'color-primary': 'rgba(var(--color-primary), var--(tw-ring-opacity, 1))',
+        'color-secondary': 'rgba(var(--color-secondary), var(--tw-ring-opacity, 1))',
+      },
+      borderColor: {
+        'color-primary': 'rgba(var(--color-primary), var(--tw-border-opacity, 1))',
+        'color-secondary': 'rgba(var(--color-secondary), var(--tw-border-opacity, 1))',
       },
       keyframes: {},
       animation: {

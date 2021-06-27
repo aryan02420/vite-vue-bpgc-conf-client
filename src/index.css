@@ -14,7 +14,7 @@
   }
 
   * {
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent focus-visible:ring-offset-2 focus-visible:ring-action-danger;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent focus-visible:ring-offset-2 focus-visible:ring-color-secondary;
     transition: all 50ms;
   }
 
@@ -34,7 +34,7 @@
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: 'liga';
 
-    @apply select-none text-xl leading-none;
+    @apply text-xl leading-none select-none;
   }
 
   .material-icons-round {
@@ -42,7 +42,7 @@
   }
 
   .hover-effect {
-    @apply hover:bg-gray-700 hover:bg-opacity-10 cursor-pointer select-none;
+    @apply cursor-pointer select-none hover:bg-gray-700 hover:bg-opacity-10;
     @apply transform hover:scale-110;
   }
 
@@ -65,10 +65,31 @@
     @apply bg-gray-400 rounded-md;
   }
   *::-webkit-scrollbar-thumb:hover {
-    @apply bg-action-normal;
+    @apply bg-color-primary;
   }
   *::-webkit-scrollbar-track {
     @apply bg-blueGray-200;
     border-radius: 16px;
   }
+}
+
+:root {
+  --color-primary: 0, 113, 133;
+  --color-secondary: 170, 23, 22;
+  --bg-primary: 242, 242, 242;
+  --bg-secondary: 235, 235, 235;
+  --text-primary: 61, 61, 61;
+  --text-secondary: 82, 82, 82;
+  --text-tertiary: 142, 142, 142;
+  --text-disabled: 174, 174, 174;
+}
+.dark {
+  --color-primary: 136, 213, 232;
+  --color-secondary: 238, 133, 133;
+  --bg-primary: 52, 52, 52;
+  --bg-secondary: 35, 35, 35;
+  --text-primary: 233, 233, 233;
+  --text-secondary: 188, 188, 188;
+  --text-tertiary: 144, 144, 144;
+  --text-disabled: 102, 102, 102;
 }

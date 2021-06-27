@@ -1,14 +1,14 @@
 <template>
-  <div class="flex flex-row flex-wrap gap-1 items-baseline w-auto">
+  <div class="flex flex-row flex-wrap items-baseline w-auto gap-1">
     <a
-      class="text-sm hover:text-action-normal hover:underline mr-1"
+      class="mr-1 text-sm hover:text-color-primary hover:underline"
       :href="channelURL"
       >#{{ channel }}</a
     >
     <a
       v-for="tag in tags"
       :key="tag"
-      class="text-xs hover:text-secondary px-2 -mx-1 rounded-full"
+      class="px-2 -mx-1 text-xs rounded-full hover:text-secondary"
       :href="tagUrl(tag)"
       >{{ tag }}</a
     >

@@ -1,11 +1,11 @@
 <template>
   <div
-    class="flex flex-row justify-between items-center mb-4 p-2 backdrop-filter backdrop-blur-md bg-blueGray-300 bg-opacity-40 border-b border-gray-300 shadow-sm text-primary"
+    class="flex flex-row items-center justify-between p-2 mb-4 border-b border-gray-300 shadow-sm backdrop-filter backdrop-blur-md bg-blueGray-300 bg-opacity-40 text-primary"
   >
     <h1 class="text-2xl">
       BPGCC
     </h1>
-    <div class="flex flex-row gap-2 items-center justify-end text-secondary">
+    <div class="flex flex-row items-center justify-end gap-2 text-secondary">
       <span v-if="Auth.isAuthenticated.value">{{ Auth.user.value.email }}</span>
       <Login class="px-2 py-1" />
       <Logout class="px-2 py-1" />

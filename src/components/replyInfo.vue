@@ -3,7 +3,7 @@
     tabindex="0"
     @click="scrollToParent()"
     @keyup.enter="scrollToParent()"
-    class="text-xs font-bold bg-action-normal bg-opacity-10 text-action-normal text-opacity-80 max-w-max px-1 py-0.5 rounded-full hover:bg-opacity-20 cursor-pointer select-none"
+    class="text-xs font-bold bg-color-primary bg-opacity-10 text-color-primary text-opacity-80 max-w-max px-1 py-0.5 rounded-full hover:bg-opacity-20 cursor-pointer select-none"
   >
     @{{ parentRef?.subcomment.username }}
   </div>

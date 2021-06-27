@@ -13,7 +13,7 @@
       @keyup.enter="sendPollVote(index + 1)"
     >
       <div class="truncate">{{ option.text }}</div>
-      <div class="poll-result text-tertiary text-xs ml-2 opacity-0">
+      <div class="ml-2 text-xs opacity-0 poll-result text-tertiary">
         {{ Math.floor(getPercentVotes(option.votes)) }}%
       </div>
     </div>
@@ -93,13 +93,13 @@ export default defineComponent({
   transition: width 500ms ease-out;
 }
 .display-results .vote-bars.voted-this {
-  @apply border-action-normal;
+  @apply border-color-primary;
 }
 .display-results .vote-bars.voted-this * {
-  @apply text-action-normal;
+  @apply text-color-primary;
 }
 .display-results .vote-bars.voted-this::before {
-  @apply bg-action-normal bg-opacity-25;
+  @apply bg-color-primary bg-opacity-25;
 }
 .poll-result {
   transition: opacity 200ms;

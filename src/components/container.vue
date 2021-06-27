@@ -21,7 +21,7 @@
           :text="postInfo.numUpvotes"
           icon="thumb_up"
           :class="[
-            { 'text-action-normal': postInfo.voted === 1, 'text-disabled': postInfo.voted === -1 },
+            { 'text-color-primary': postInfo.voted === 1, 'text-disabled': postInfo.voted === -1 },
           ]"
           @clicked-event="vote(1)"
         />
@@ -29,7 +29,7 @@
           :text="postInfo.numDownvotes"
           icon="thumb_down"
           :class="[
-            { 'text-action-danger': postInfo.voted === -1, 'text-disabled': postInfo.voted === 1 },
+            { 'text-color-secondary': postInfo.voted === -1, 'text-disabled': postInfo.voted === 1 },
           ]"
           @clicked-event="vote(-1)"
         />
@@ -38,14 +38,14 @@
           v-if="postInfo.showSubComments && commentsExist"
           :text="postInfo.numComments"
           icon="mode_comment"
-          :class="[{ 'text-action-normal': commentsVisible }]"
+          :class="[{ 'text-color-primary': commentsVisible }]"
           @clicked-event="toggleCommentsVisibility"
         />
         <SmallButton text="reply" icon="reply" @clicked-event="reply" />
         <Separator />
         <SmallButton
           icon="bookmark"
-          :class="[{ 'text-action-danger': isBookmarked }]"
+          :class="[{ 'text-color-secondary': isBookmarked }]"
           @clicked-event="bookmark"
         />
         <SmallButton icon="share" @clicked-event="share" />
@@ -54,7 +54,7 @@
       </div>
     </div>
     <transition name="collapse">
-      <div v-if="commentsVisible" class="bg-gray-500 bg-opacity-5 pl-5">
+      <div v-if="commentsVisible" class="pl-5 bg-gray-500 bg-opacity-5">
         <slot name="comments"></slot>
       </div>
     </transition>

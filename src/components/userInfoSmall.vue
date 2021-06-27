@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-row items-center gap-x-2 w-auto text-username"
+    class="flex flex-row items-center w-auto gap-x-2 text-username"
     :style="{ color: color }"
   >
     <a
@@ -11,7 +11,7 @@
       ]"
     >
       <img
-        class="bg-white overflow-hidden rounded-full ring-2 ring-opacity-30 ring-gray-500"
+        class="overflow-hidden bg-white rounded-full ring-2 ring-opacity-30 ring-gray-500"
         :src="profileImageURL"
         :alt="name"
         loading="lazy"
@@ -20,7 +20,7 @@
     </a>
     <a
       :href="profileURL"
-      class="font-bold hover:underline text-sm"
+      class="text-sm font-bold hover:underline"
       :data-username="true"
       >{{ name }}</a
     >
@@ -111,6 +111,6 @@ export default defineComponent({
   @apply ring-2;
 }
 .user-status:focus-visible::before {
-  @apply ring-2 ring-action-normal;
+  @apply ring-2 ring-color-primary;
 }
 </style>

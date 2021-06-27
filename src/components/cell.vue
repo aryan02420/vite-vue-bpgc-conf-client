@@ -1,8 +1,8 @@
 <template>
-  <div class="py-3 px-8 bg-primary shadow-sm rounded-md">
-    <div class="flex flex-row justify-between items-center">
+  <div class="px-8 py-3 rounded-md shadow-sm bg-primary">
+    <div class="flex flex-row items-center justify-between">
       <h4 class="text-primary text-md">{{ title }}</h4>
-      <h6 v-if="value" class="text-secondary text-sm">{{ value }}</h6>
+      <h6 v-if="value" class="text-sm text-secondary">{{ value }}</h6>
     </div>
     <div v-if="description" class="text-sm">
       <p>{{ description }}</p>

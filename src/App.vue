@@ -1,6 +1,6 @@
 <template>
   <TopBar
-    class="fixed left-0 right-0 top-0 z-10 duration-1000 ease-out"
+    class="fixed top-0 left-0 right-0 z-10 duration-1000 ease-out"
     :style="{
       top: `${scrollNormPos > 0 ? (scrollNormPos < 200 ? -1 * scrollNormPos : -200) : 0}px`,
     }"
@@ -13,7 +13,7 @@
     </transition>
   </router-view>
   <BottomNav
-    class="fixed left-1/2 transform -translate-x-1/2 mb-2 bottom-0 z-10 duration-1000 ease-out"
+    class="fixed bottom-0 z-10 mb-2 duration-1000 ease-out transform -translate-x-1/2 left-1/2"
     :style="{
       bottom: `${scrollNormPos > 96 ? (scrollNormPos < 200 ? -1 * (scrollNormPos - 96) : -200) : 0}px`,
     }"

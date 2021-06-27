@@ -3,7 +3,7 @@
     tabindex="0"
     @click="$emit('clicked-event')"
     @keyup.enter="$emit('clicked-event')"
-    class="flex flex-row items-center gap-x-0 w-auto rounded-full p-2 hover-effect"
+    class="flex flex-row items-center w-auto p-2 rounded-full gap-x-0 hover-effect"
   >
     <span
       v-if="!!icon"

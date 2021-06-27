@@ -2,7 +2,7 @@
   <div
     v-if="Auth.isAuthenticated.value"
     @click="logout"
-    class="bg-action-danger text-white max-w-max rounded-md cursor-pointer focus-visible:ring-offset-white focus-visible:ring-offset-2"
+    class="text-white bg-opacity-100 rounded-md cursor-pointer bg-color-secondary max-w-max focus-visible:ring-offset-white focus-visible:ring-offset-2"
     tabindex="0"
   >
     Logout

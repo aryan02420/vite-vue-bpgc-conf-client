@@ -2,7 +2,7 @@
   <Container
     :id="post.id"
     tabindex="1"
-    class="bg-primary shadow-sm rounded-md"
+    class="rounded-md shadow-sm bg-primary"
     :postInfo="{
       userName: post.username,
       userImgSize: 1.5,

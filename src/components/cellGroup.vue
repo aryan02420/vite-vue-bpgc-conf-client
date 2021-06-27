@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="pt-6 pb-2 px-4">
-      <h3 class="text-primary text-lg">{{ title }}</h3>
+    <div class="px-4 pt-6 pb-2">
+      <h3 class="text-lg text-primary">{{ title }}</h3>
     </div>
     <div class="space-y-0.5">
       <slot></slot>
