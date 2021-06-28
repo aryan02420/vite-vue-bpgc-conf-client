@@ -2,7 +2,7 @@
   <div
     v-if="!Auth.isAuthenticated.value"
     @click="login"
-    class="text-white bg-opacity-100 rounded-md cursor-pointer bg-color-primary max-w-max focus-visible:ring-offset-white focus-visible:ring-offset-2"
+    class="text-inverted bg-opacity-100 rounded-md cursor-pointer bg-color-primary max-w-max focus-visible:ring-offset-white focus-visible:ring-offset-2"
     tabindex="0"
   >
     Login

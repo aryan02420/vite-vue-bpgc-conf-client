@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-row items-center justify-between p-2 mb-4 border-b border-gray-300 shadow-sm backdrop-filter backdrop-blur-md bg-blueGray-300 bg-opacity-40 text-primary"
+    class="flex flex-row items-center justify-between p-2 mb-4 border-b border-gray-300 shadow-sm backdrop-filter backdrop-blur-md bg-bluGry bg-opacity-40 text-primary"
   >
     <h1 class="text-2xl">
       BPGCC
@@ -35,7 +35,7 @@ export default defineComponent({
 <style lang="postcss" scoped>
 @supports not (backdrop-filter: blur(1px)) {
   .backdrop-filter {
-    @apply bg-blueGray-100 bg-opacity-90;
+    @apply bg-bluGry bg-opacity-90;
   }
 }
 </style>

@@ -73,23 +73,30 @@
   }
 }
 
-:root {
+:root,
+.light,
+body[data-theme='light'] {
   --color-primary: 0, 113, 133;
   --color-secondary: 170, 23, 22;
   --bg-primary: 242, 242, 242;
   --bg-secondary: 235, 235, 235;
+  --bg-blueGray: 226, 232, 240;
   --text-primary: 61, 61, 61;
   --text-secondary: 82, 82, 82;
   --text-tertiary: 142, 142, 142;
   --text-disabled: 174, 174, 174;
+  --text-inverted: 213, 213, 213;
 }
-.dark {
+.dark,
+body[data-theme='dark']  {
   --color-primary: 136, 213, 232;
   --color-secondary: 238, 133, 133;
-  --bg-primary: 52, 52, 52;
-  --bg-secondary: 35, 35, 35;
-  --text-primary: 233, 233, 233;
-  --text-secondary: 188, 188, 188;
+  --bg-primary: 34, 34, 34;
+  --bg-secondary: 27, 27, 27;
+  --bg-blueGray: 23, 25, 25;
+  --text-primary: 213, 213, 213;
+  --text-secondary: 172, 172, 172;
   --text-tertiary: 144, 144, 144;
   --text-disabled: 102, 102, 102;
+  --text-inverted: 61, 61, 61;
 }

@@ -32,6 +32,7 @@ module.exports = {
         secondary: 'rgba(var(--text-secondary), var(--tw-text-opacity, 1))',
         tertiary: 'rgba(var(--text-tertiary), var(--tw-text-opacity, 1))',
         disabled: 'rgba(var(--text-disabled), var(--tw-text-opacity, 1))',
+        inverted: 'rgba(var(--text-inverted), var(--tw-text-opacity, 1))',
         'color-primary': 'rgba(var(--color-primary), var(--tw-text-opacity, 1))',
         'color-secondary': 'rgba(var(--color-secondary), var(--tw-text-opacity, 1))',
       },
@@ -45,6 +46,7 @@ module.exports = {
       backgroundColor: {
         primary: 'rgba(var(--bg-primary), var(--tw-bg-opacity, 1))',
         secondary: 'rgba(var(--bg-secondary), var(--tw-bg-opacity, 1))',
+        bluGry: 'rgba(var(--bg-blueGray), var(--tw-bg-opacity, 1))',
         'color-primary': 'rgba(var(--color-primary), var(--tw-bg-opacity, 1))',
         'color-secondary': 'rgba(var(--color-secondary), var(--tw-bg-opacity, 1))',
       },

@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-lg mx-auto mb-3 -mt-5">
     <CellGroup title="Preferences">
-      <Cell title="Theme" value="Light" />
+      <Cell title="Theme" :value="store.getters.theme" @click="changeTheme" />
     </CellGroup>
     <CellGroup title="About">
       <Cell title="Source Code" />
@@ -21,6 +21,7 @@
 import { defineComponent } from 'vue'
 import Cell from '@/components/cell.vue'
 import CellGroup from '@/components/cellGroup.vue'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'Settings',
@@ -34,6 +35,17 @@ export default defineComponent({
       gh_sha: import.meta.env.VITE_GITHUB_SHA,
       gh_ref: import.meta.env.VITE_GITHUB_REF,
     }
+  },
+  setup() {
+    const store = useStore()
+    return {
+      store,
+    }
+  },
+  methods: {
+    changeTheme() {
+      this.store.commit('changeTheme')
+    },
   },
 })
 </script>
