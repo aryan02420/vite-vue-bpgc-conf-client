@@ -23,6 +23,7 @@
     "@vue/compiler-sfc": "^3.0.5",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.3.0",
+    "postcss-themewind": "0.0.0",
     "push-dir": "^0.4.1",
     "tailwindcss": "^2.2.4",
     "typescript": "^4.1.3",

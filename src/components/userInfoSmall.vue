@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-row items-center w-auto gap-x-2 text-username"
+    class="flex flex-row items-center w-auto gap-x-1 text-username"
     :style="{ color: color }"
   >
     <a
@@ -20,7 +20,7 @@
     </a>
     <a
       :href="profileURL"
-      class="text-sm font-bold hover:underline"
+      class="px-1 text-sm font-bold hover:underline"
       :data-username="true"
       >{{ name }}</a
     >
@@ -106,11 +106,5 @@ export default defineComponent({
 .user-status-hidden::before,
 .user-status-hidden::after {
   @apply hidden;
-}
-.user-status:focus-visible {
-  @apply ring-2;
-}
-.user-status:focus-visible::before {
-  @apply ring-2 ring-color-primary;
 }
 </style>

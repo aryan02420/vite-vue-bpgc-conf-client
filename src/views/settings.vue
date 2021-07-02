@@ -1,12 +1,18 @@
 <template>
   <div class="max-w-lg mx-auto mb-3 -mt-5">
     <CellGroup title="Preferences">
-      <Cell title="Theme" :value="store.getters.theme" @click="changeTheme" />
+      <Cell
+        title="Theme"
+        :value="store.getters.theme"
+        @click="changeTheme"
+        @keyup.enter="changeTheme"
+        tabindex="0"
+      />
     </CellGroup>
     <CellGroup title="About">
-      <Cell title="Source Code" />
-      <Cell title="Privacy Policy" />
-      <Cell title="FAQ" />
+      <Cell title="Source Code" tabindex="0" />
+      <Cell title="Privacy Policy" tabindex="0" />
+      <Cell title="FAQ" tabindex="0" />
     </CellGroup>
     <CellGroup title="Build Info">
       <Cell title="Mode" :value="env" />

@@ -1,5 +1,7 @@
 const colors = require('tailwindcss/colors')
 
+const { useColor } = require('postcss-themewind/utils')
+
 module.exports = {
   mode: 'jit',
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
@@ -17,8 +19,8 @@ module.exports = {
         'status-busy': '#FFCC10',
         inherit: 'inherit',
         initial: 'initial',
-        'color-primary': 'rgb(var(--color-primary))',
-        'color-secondary': 'rgb(var(--color-secondary))',
+        'color-primary': useColor('--color-primary'),
+        'color-secondary': useColor('--color-secondary'),
       },
       opacity: {
         initial: 'initial',
@@ -28,13 +30,11 @@ module.exports = {
         link: '#1D75E7',
         upvote: '#1074EA',
         downvote: '#F09038',
-        primary: 'rgba(var(--text-primary), var(--tw-text-opacity, 1))',
-        secondary: 'rgba(var(--text-secondary), var(--tw-text-opacity, 1))',
-        tertiary: 'rgba(var(--text-tertiary), var(--tw-text-opacity, 1))',
-        disabled: 'rgba(var(--text-disabled), var(--tw-text-opacity, 1))',
-        inverted: 'rgba(var(--text-inverted), var(--tw-text-opacity, 1))',
-        'color-primary': 'rgba(var(--color-primary), var(--tw-text-opacity, 1))',
-        'color-secondary': 'rgba(var(--color-secondary), var(--tw-text-opacity, 1))',
+        primary: useColor('--text-primary'),
+        secondary: useColor('--text-secondary'),
+        tertiary: useColor('--text-tertiary'),
+        disabled: useColor('--text-disabled'),
+        inverted: useColor('--text-inverted'),
       },
       fill: {
         transparent: 'transparent',
@@ -44,23 +44,17 @@ module.exports = {
         body: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       },
       backgroundColor: {
-        primary: 'rgba(var(--bg-primary), var(--tw-bg-opacity, 1))',
-        secondary: 'rgba(var(--bg-secondary), var(--tw-bg-opacity, 1))',
-        bluGry: 'rgba(var(--bg-blueGray), var(--tw-bg-opacity, 1))',
-        'color-primary': 'rgba(var(--color-primary), var(--tw-bg-opacity, 1))',
-        'color-secondary': 'rgba(var(--color-secondary), var(--tw-bg-opacity, 1))',
-      },
-      ringColor: {
-        'color-primary': 'rgba(var(--color-primary), var--(tw-ring-opacity, 1))',
-        'color-secondary': 'rgba(var(--color-secondary), var(--tw-ring-opacity, 1))',
-      },
-      borderColor: {
-        'color-primary': 'rgba(var(--color-primary), var(--tw-border-opacity, 1))',
-        'color-secondary': 'rgba(var(--color-secondary), var(--tw-border-opacity, 1))',
+        bluGry: useColor('--bg-blueGray'),
+        primary: useColor('--bg-primary'),
+        secondary: useColor('--bg-secondary'),
+        tertiary: useColor('--bg-tertiary'),
       },
       keyframes: {},
       animation: {
         highlight: 'highlight 1200ms linear',
+      },
+      outline: {
+        dashed: ['3px dashed var(--outline-color)', '-3px'],
       },
     },
   },

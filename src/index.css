@@ -14,8 +14,8 @@
   }
 
   * {
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent focus-visible:ring-offset-2 focus-visible:ring-color-secondary;
-    transition: all 50ms;
+    /* @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent focus-visible:ring-offset-2 focus-visible:ring-color-secondary; */
+    @apply outline-none focus-visible:outline-dashed;
   }
 
   .material-icons {
@@ -80,23 +80,29 @@ body[data-theme='light'] {
   --color-secondary: 170, 23, 22;
   --bg-primary: 242, 242, 242;
   --bg-secondary: 235, 235, 235;
-  --bg-blueGray: 226, 232, 240;
+  --bg-blueGray: useColor(theme('colors.blueGray.200'));
   --text-primary: 61, 61, 61;
   --text-secondary: 82, 82, 82;
   --text-tertiary: 142, 142, 142;
   --text-disabled: 174, 174, 174;
-  --text-inverted: 213, 213, 213;
+  --text-inverted: 233, 233, 233;
+  --outline-color: theme('colors.black');
 }
 .dark,
-body[data-theme='dark']  {
+body[data-theme='dark'] {
   --color-primary: 136, 213, 232;
   --color-secondary: 238, 133, 133;
   --bg-primary: 34, 34, 34;
   --bg-secondary: 27, 27, 27;
-  --bg-blueGray: 23, 25, 25;
+  --bg-blueGray: useColor(theme('colors.trueGray.900'));
   --text-primary: 213, 213, 213;
   --text-secondary: 172, 172, 172;
   --text-tertiary: 144, 144, 144;
   --text-disabled: 102, 102, 102;
-  --text-inverted: 61, 61, 61;
+  --text-inverted: 20, 20, 20;
+  --outline-color: theme('colors.white');
+}
+
+body {
+  background: theme('colors.blue.500');
 }
