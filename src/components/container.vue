@@ -21,7 +21,10 @@
           :text="postInfo.numUpvotes"
           icon="thumb_up"
           :class="[
-            { 'text-color-primary': postInfo.voted === 1, 'text-disabled': postInfo.voted === -1 },
+            {
+              'text-color-primary': postInfo.voted === 1,
+              'text-disabled': postInfo.voted === -1,
+            },
           ]"
           @clicked-event="vote(1)"
         />
@@ -29,11 +32,13 @@
           :text="postInfo.numDownvotes"
           icon="thumb_down"
           :class="[
-            { 'text-color-secondary': postInfo.voted === -1, 'text-disabled': postInfo.voted === 1 },
+            {
+              'text-color-secondary': postInfo.voted === -1,
+              'text-disabled': postInfo.voted === 1,
+            },
           ]"
           @clicked-event="vote(-1)"
         />
-        <Separator />
         <SmallButton
           v-if="postInfo.showSubComments && commentsExist"
           :text="postInfo.numComments"
@@ -41,16 +46,14 @@
           :class="[{ 'text-color-primary': commentsVisible }]"
           @clicked-event="toggleCommentsVisibility"
         />
-        <SmallButton text="reply" icon="reply" @clicked-event="reply" />
-        <Separator />
+        <SmallButton text="reply" @clicked-event="reply" />
         <SmallButton
-          icon="bookmark"
+          :text="isBookmarked ? 'saved' : 'save'"
           :class="[{ 'text-color-secondary': isBookmarked }]"
           @clicked-event="bookmark"
         />
-        <SmallButton icon="share" @clicked-event="share" />
-        <Separator />
-        <SmallButton icon="flag" @clicked-event="report" />
+        <SmallButton text="share" @clicked-event="share" />
+        <SmallButton text="report" @clicked-event="report" />
       </div>
     </div>
     <transition name="collapse">
@@ -150,8 +153,7 @@ export default defineComponent({
   opacity: 0;
 }
 .collapse-enter-from,
-.collapse-leave-to
-.collapse-enter-to,
+.collapse-leave-to .collapse-enter-to,
 .collapse-leave-from {
   transform-origin: 50% 0%;
 }

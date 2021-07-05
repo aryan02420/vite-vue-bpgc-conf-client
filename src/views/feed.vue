@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col max-w-lg gap-4 mx-auto mb-3">
+  <div class="flex flex-col max-w-2xl gap-4 mx-auto mb-3">
     <Post v-for="post in store.state.data" :key="post.id" tabindex="1" :post="post" />
   </div>
 </template>
