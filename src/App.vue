@@ -88,13 +88,10 @@ export default defineComponent({
 
 <style lang="postcss">
 #app {
-  font-family: 'Roboto', 'Montserrat', Helvetica, Arial, sans-serif;
+  font-family: 'Atkinson Hyperlegible', 'Montserrat', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
-}
-a {
-  font-family: 'Roboto', Helvetica, Arial, sans-serif;
 }
 .fade-down-enter-active,
 .fade-down-leave-active {
